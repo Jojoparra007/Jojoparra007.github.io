@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+< !DOCTYPE html >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,20 +15,17 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-
-
-
 
     <!-- Main Section (Home) -->
     <section id="home">
         <h2>Introduction</h2>
         <p>Welcome to my website! I'm Jose Parra, an aerospace engineer with a dedication to innovation and practical problem-solving. My work spans various fields, including computational fluid dynamics, wind energy analysis, and advanced neural networks. With hands-on experience in tools like SolidWorks, ANSYS, and MATLAB, I bring a thorough approach to each project, focusing on solutions with real-world impact. Here, you’ll find highlights of my projects, complete with visuals and detailed reports. Thank you for stopping by, and feel free to reach out for any inquiries or potential collaborations!</p>
     </section>
-
 
     <!-- About Me Section -->
     <section id="about">
@@ -50,26 +46,19 @@
             <!-- Project 1 -->
             <div class="project-card">
                 <h3>Project 1</h3>
-                <p>
-                 
-
-                    This project employs advanced Computational Fluid Dynamics (CFD) to simulate a two-dimensional mixing chamber driven by rotating disks. By solving the Navier-Stokes, continuity, and mass fraction transport equations, the study captures complex fluid flow and scalar distribution within the chamber. Utilizing high-precision numerical methods like WENO schemes for advection, Crank-Nicolson for diffusion, and multigrid solvers for pressure correction ensures accurate and stable results. Carefully defined boundary conditions replicate realistic inlet, outlet, and wall interactions. Key metrics such as kinetic energy and scalar mixing efficiency are analyzed to evaluate and optimize the chamber’s performance. The findings provide critical insights for enhancing mixing processes in applications like chemical reactors and environmental engineering, demonstrating the project's potential to improve industrial mixing efficiency and effectiveness.
-
-                    
-                </p>
-             
+                <p>This project employs advanced Computational Fluid Dynamics (CFD) to simulate a two-dimensional mixing chamber...</p>
             </div>
-            <!-- Video -->
 
+            <!-- Video Section -->
             <section id="video">
                 <h2>Y Mass Flow</h2>
                 <video width="640" height="360" controls>
                     <source src="YMovie.mp4" type="video/mp4">
-                    
+                    Video description unavailable.
                 </video>
             </section>
 
-            <!--pdf download-->
+            <!-- PDF Download Section -->
             <section id="download">
                 <h2>Download Project Report</h2>
                 <p>Click the link below to download the PDF report associated with this project.</p>
@@ -91,9 +80,6 @@
             </div>
         </div>
     </section>
-    
-
-
 
     <!-- Contact Section -->
     <section id="contact">
@@ -101,10 +87,10 @@
         <p>If you’d like to get in touch, feel free to send me an email at <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.</p>
     </section>
 
-
+    <!-- Contact Form with Formspree -->
     <section id="contact-form">
         <h2>Contact Me</h2>
-        <form>
+        <form action="https://formspree.io/f/myzyeode" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -118,8 +104,6 @@
         </form>
     </section>
 
-
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Jose Parra. All rights reserved.</p>
@@ -127,10 +111,9 @@
 
     <!-- Back to the top button -->
     <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
 </html>
-
-
-
