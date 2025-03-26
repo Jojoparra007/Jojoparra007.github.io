@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soft Robotics Lab Series</title>
+  <!-- Link to your external CSS file -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header with Navigation -->
+  <header>
+    <h1>Soft Robotics Lab Series</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#lab1">Lab 1</a></li>
+        <li><a href="#lab2">Lab 2</a></li>
+        <li><a href="#lab3">Lab 3</a></li>
+        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>
+      Welcome to the <strong>Soft Robotics Lab Series</strong>, a hands-on guide to designing
+      and simulating a soft robotic gripper using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
+      Here, you'll find step-by-step instructions, downloadable resources, and practical tips
+      for anyone looking to explore the world of soft robotics.
+    </p>
+  </section>
+
+  <!-- Overview Section -->
+  <section id="overview">
+    <h2>Project Overview</h2>
+    <p>
+      The primary objective of this series is to model a pneumatic soft robotic gripper
+      with four fingers, capable of picking up a round cross-section object. Across four labs,
+      you will learn how to:
+    </p>
+    <ul>
+      <li>Set up the geometry, mesh, and material properties in ANSYS</li>
+      <li>Apply boundary conditions, loads, and contact interactions</li>
+      <li>Assemble multiple soft actuator segments into one gripper</li>
+      <li>Optimize designs by analyzing simulation output and refining parameters</li>
+    </ul>
+    <p>
+      By the end of these labs, you will have a clear understanding of how to use
+      <strong>Finite Element Analysis (FEA)</strong> tools and techniques to model and optimize
+      soft actuators in a professional engineering environment.
+    </p>
+  </section>
+
+  <!-- Lab 1: MATLAB + SoRoSim -->
+  <section id="lab1">
+    <h2>Lab 1: Intro to Soft Robotics & SoRoSim (MATLAB)</h2>
+    <p>
+      <strong>Goal:</strong> Provide an introduction to continuum soft robots and demonstrate
+      how to set up a basic soft actuator simulation using <em>SoRoSim</em> in MATLAB.
+    </p>
+    <ol>
+      <li><strong>Background:</strong> Quick overview of continuum robotics and the benefits of pneumatic soft actuators.</li>
+      <li><strong>SoRoSim Setup:</strong> Installation and dependencies, plus a sample script to run a simple bending actuator model.</li>
+      <li><strong>Key Parameters:</strong> How pressure, segment length, and stiffness affect the robot’s bending behavior.</li>
+      <li><strong>Visualization:</strong> Generating plots or animations showing actuator deformation.</li>
+    </ol>
+    <p>
+      <em>Tip:</em> If you’re new to MATLAB, focus on the basics: how to run .m files, navigate the workspace, and interpret command window outputs.
+    </p>
+  </section>
+
+  <!-- Lab 2: ANSYS - Geometry & Meshing -->
+  <section id="lab2">
+    <h2>Lab 2: ANSYS Setup – Geometry & Meshing</h2>
+    <p>
+      <strong>Goal:</strong> Teach how to model a soft robotic finger in ANSYS, focusing on
+      creating and meshing the geometry.
+    </p>
+    <ol>
+      <li><strong>Geometry Creation:</strong> Sketch or import the 3D model of a soft finger with an internal channel for pressurization.</li>
+      <li><strong>Meshing Strategy:</strong> Choose suitable element types (e.g., hexahedral/tetrahedral) and refine the mesh for accurate bending simulations.</li>
+      <li><strong>Quality Checks:</strong> Check aspect ratio, skewness, and element count to ensure stable solutions.</li>
+    </ol>
+    <p>
+      <em>Tip:</em> Keep the mesh coarse for quick test runs, then refine it for final simulations.
+    </p>
+  </section>
+
+  <!-- Lab 3: ANSYS - Materials & Assembly -->
+  <section id="lab3">
+    <h2>Lab 3: Material Modeling & Assembly</h2>
+    <p>
+      <strong>Goal:</strong> Introduce hyperelastic materials in ANSYS and demonstrate how
+      to assemble multiple soft fingers into one gripper.
+    </p>
+    <ol>
+      <li><strong>Material Models:</strong> Use hyperelastic material data (e.g., Neo-Hookean, Ogden, or Mooney-Rivlin) to simulate silicone-like behavior.</li>
+      <li><strong>Assembly:</strong> Combine four finger models into a single gripper, ensuring proper alignment and contact between parts.</li>
+      <li><strong>Connections & Constraints:</strong> Define how each finger attaches to a base or manifold for uniform pressure distribution.</li>
+    </ol>
+    <p>
+      <em>Tip:</em> If you have real-world material test data, use the curve-fitting tools in ANSYS to get more accurate results.
+    </p>
+  </section>
+
+  <!-- Lab 4: ANSYS - Simulation & Optimization -->
+  <section id="lab4">
+    <h2>Lab 4: Simulation & Post-Processing</h2>
+    <p>
+      <strong>Goal:</strong> Apply internal pressure loads to the assembled gripper, run the
+      simulation, and optimize the design based on the results.
+    </p>
+    <ol>
+      <li><strong>Pressure Loading:</strong> Assign internal pressure in each finger’s chamber.</li>
+      <li><strong>Nonlinear Simulation:</strong> Solve for large deformations and contact with a round object.</li>
+      <li><strong>Results Analysis:</strong> Evaluate stress, strain, displacement, and contact forces. Compare predicted gripping force vs. real requirements.</li>
+      <li><strong>Design Optimization:</strong> Adjust geometry, material thickness, or pressure values to achieve the best grip performance.</li>
+    </ol>
+    <p>
+      <em>Tip:</em> Experiment with different pressures and note how the finger curvature changes.
+      This helps you understand real-world design trade-offs (e.g., higher pressure = stronger grip but also more stress).
+    </p>
+  </section>
+
+  <!-- Downloads Section -->
+  <section id="downloads">
+    <h2>Downloads</h2>
+    <p>
+      Below are links to the resources you’ll need for the labs:
+    </p>
+    <ul>
+      <li><a href="SoftRoboticsLab_Models.zip" download>Soft Robotics CAD Models (ZIP)</a></li>
+      <li><a href="SoRoSimScripts.zip" download>SoRoSim MATLAB Scripts (ZIP)</a></li>
+      <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project Files (ZIP)</a></li>
+      <li><a href="MaterialData.xlsx" download>Hyperelastic Material Data (XLSX)</a></li>
+    </ul>
+    <p>
+      Each ZIP file includes a “README” that explains how to set up your working directory.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      If you have any questions or feedback, feel free to email me at
+      <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.
+    </p>
+  </section>
+
+  <!-- Contact Form with Formspree -->
+  <section id="contact-form">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/myzyeode" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Jose Parra. All rights reserved.</p>
+  </footer>
+
+  <!-- Back to the top button -->
+  <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
+
+  <!-- JavaScript -->
+  <script>
+    // Example "Back to Top" function
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
