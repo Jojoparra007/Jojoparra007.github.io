@@ -31,9 +31,9 @@
     <h2>Welcome</h2>
     <p>
       Welcome to the <strong>Soft Robotics Lab Series</strong>, a hands-on guide to designing
-      and simulating a soft robotic gripper using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
-      Here, you'll find step-by-step instructions, downloadable resources, and practical tips
-      for anyone looking to explore the world of soft robotics.
+      and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
+      In these labs, you’ll learn how to set up your geometry, choose appropriate materials,
+      apply loads and boundary conditions, and optimize your design parameters.
     </p>
   </section>
 
@@ -41,99 +41,179 @@
   <section id="overview">
     <h2>Project Overview</h2>
     <p>
-      The primary objective of this series is to model a pneumatic soft robotic gripper
-      with four fingers, capable of picking up a round cross-section object. Across four labs,
-      you will learn how to:
+      The primary objective is to explore various approaches to soft robotic actuators—
+      from basic pneumatic grippers to fiber-reinforced designs—using Finite Element Analysis
+      and specialized MATLAB toolboxes for soft robotics. By the end, you’ll have experience
+      with:
     </p>
     <ul>
-      <li>Set up the geometry, mesh, and material properties in ANSYS</li>
-      <li>Apply boundary conditions, loads, and contact interactions</li>
-      <li>Assemble multiple soft actuator segments into one gripper</li>
-      <li>Optimize designs by analyzing simulation output and refining parameters</li>
+      <li>Hyperelastic material modeling and meshing strategies in ANSYS</li>
+      <li>Applying boundary conditions, loads, and pressure inputs</li>
+      <li>Assembly of multi-finger or fiber-reinforced actuators</li>
+      <li>Simulation, post-processing, and optimization for real-world designs</li>
+      <li>Using SoRoSim in MATLAB for continuum soft robotics</li>
     </ul>
-    <p>
-      By the end of these labs, you will have a clear understanding of how to use
-      <strong>Finite Element Analysis (FEA)</strong> tools and techniques to model and optimize
-      soft actuators in a professional engineering environment.
-    </p>
-  </section>
-  <section id="Prenumatic Arm Gripper">
-                    <h2>Lab 1 Prenumatic Hand Gripper</h2>
-                    <img src="lab1.png" alt="1 Finger gripper" width="640" height="360">
   </section>
 
-  <!-- Lab 1: MATLAB + SoRoSim -->
-  <section id="lab4">
-    <h2>Lab 1: Intro to Soft Robotics & SoRoSim (MATLAB)</h2>
+  <!-- Lab 1: Pneumatic Soft Robotic Gripper -->
+  <section id="lab1">
+    <h2>Lab 1: Pneumatic Soft Robotic Gripper</h2>
+
+    <h3>Objective</h3>
     <p>
-      <strong>Goal:</strong> Provide an introduction to continuum soft robots and demonstrate
-      how to set up a basic soft actuator simulation using <em>SoRoSim</em> in MATLAB.
+      Model a pneumatic soft robotic gripper that has four fingers, intended to pick up
+      an object with a round cross-section.
     </p>
-    <ol>
-      <li><strong>Background:</strong> Quick overview of continuum robotics and the benefits of pneumatic soft actuators.</li>
-      <li><strong>SoRoSim Setup:</strong> Installation and dependencies, plus a sample script to run a simple bending actuator model.</li>
-      <li><strong>Key Parameters:</strong> How pressure, segment length, and stiffness affect the robot’s bending behavior.</li>
-      <li><strong>Visualization:</strong> Generating plots or animations showing actuator deformation.</li>
-    </ol>
+
+    <h3>Expected Outcome</h3>
     <p>
-      <em>Tip:</em> If you’re new to MATLAB, focus on the basics: how to run .m files, navigate the workspace, and interpret command window outputs.
+      By completing this lab, you’ll learn core FEA tools and techniques to simulate a simple
+      pneumatic actuator in ANSYS Mechanical. You’ll gain hands-on experience setting up
+      geometry, meshing, material selection, and boundary conditions.
     </p>
-  </section>
-  <section id="Sorosim">
-                    <h2>Sorosim</h2>
-                    <img src="lab4.png" alt="Sorosim" width="640" height="360">
+
+    <h3>Section 1: Geometry, Meshing, Material Selection</h3>
+    <p>
+      Start by creating the basic 3D geometry for each finger and the internal air channel
+      for pressurization. Perform a suitable mesh (e.g., tetrahedral or hexahedral) and choose
+      a hyperelastic material from the ANSYS database (e.g., Yeoh or Mooney-Rivlin).
+    </p>
+
+    <h3>Section 2: BC, Loads, and Contact Conditions</h3>
+    <p>
+      Define frictional or bonded contacts where necessary (e.g., between finger segments).
+      Apply a ramped pressure load (e.g., up to 30 kPa) over a certain time step to simulate
+      inflation. Constrain the base or mounting points appropriately.
+    </p>
+
+    <!-- Example images or figures -->
+    <figure>
+      <img src="lab1_geometry.png" alt="Lab 1 Geometry Example" width="500">
+      <figcaption>Geometry (XY view) showing internal walls where pressure is applied.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="lab1_results.png" alt="Lab 1 Simulation Results" width="500">
+      <figcaption>Pressure vs Time chart from a 2-second simulation ramp.</figcaption>
+    </figure>
   </section>
 
-  <!-- Lab 2: ANSYS - Geometry & Meshing -->
+  <!-- Lab 2: ANSYS Setup – Detailed Geometry & Meshing -->
   <section id="lab2">
-    <h2>Lab 2: ANSYS Setup – Geometry & Meshing</h2>
+    <h2>Lab 2: Detailed Geometry & Meshing</h2>
     <p>
-      <strong>Goal:</strong> Teach how to model a soft robotic finger in ANSYS, focusing on
-      creating and meshing the geometry.
+      <strong>Goal:</strong> Dive deeper into how to refine your geometry and mesh in ANSYS
+      to capture large deformations accurately.
     </p>
     <ol>
-      <li><strong>Geometry Creation:</strong> Sketch or import the 3D model of a soft finger with an internal channel for pressurization.</li>
-      <li><strong>Meshing Strategy:</strong> Choose suitable element types (e.g., hexahedral/tetrahedral) and refine the mesh for accurate bending simulations.</li>
-      <li><strong>Quality Checks:</strong> Check aspect ratio, skewness, and element count to ensure stable solutions.</li>
+      <li><strong>Geometry Creation:</strong> Either create from scratch or import your 3D model
+        of the soft actuator. Incorporate any internal channels, sensor cutouts, or strain-limit
+        layers in the design.</li>
+      <li><strong>Meshing Strategy:</strong> Select element types suitable for hyperelastic
+        materials. Pay attention to mesh density in regions with high curvature or stress
+        gradients.</li>
+      <li><strong>Quality Checks:</strong> Evaluate element quality metrics (aspect ratio,
+        skewness, etc.). A well-refined mesh helps ensure stable and accurate results.</li>
     </ol>
-    <p>
-      <em>Tip:</em> Keep the mesh coarse for quick test runs, then refine it for final simulations.
-    </p>
   </section>
 
-  <!-- Lab 3: ANSYS - Materials & Assembly -->
+  <!-- Lab 3: Fiber-Reinforced Actuators -->
   <section id="lab3">
-    <h2>Lab 3: Material Modeling & Assembly</h2>
+    <h2>Lab 3: Fiber-Reinforced Actuators</h2>
+
+    <h3>Actuator Body (Eco Flex, Neo-Hookean)</h3>
+    <ul>
+      <li>Shear Modulus <em>μ̄</em> = 0.314 MPa</li>
+    </ul>
+
+    <h3>Strain-Limiting Layer (Fiberglass, Linear Elastic)</h3>
+    <ul>
+      <li>Young’s Modulus ≈ 7.9 MPa (combined)</li>
+    </ul>
+
+    <h3>Fiber Reinforcement (Kevlar, Linear Elastic)</h3>
+    <ul>
+      <li>Young’s Modulus <em>E</em> = 31,076 MPa</li>
+      <li>
+        <strong>Torque for Hemi-circular Section:</strong><br>
+        M<sub>ₐ</sub> = 0.34 × a³ × P<sub>ₐ</sub>  
+        Given a = 8 mm, P<sub>ₐ</sub> = 60 kPa → M<sub>ₐ</sub> ≈ 10.46 N·mm
+      </li>
+      <li>
+        <strong>Force Output at Tip:</strong><br>
+        F = [(4a³ + 3πa²b)/6L] × P<sub>ₐ</sub>  
+        For a = 8 mm, b = 2 mm, L = 10 mm → F ≈ 8.5 N
+      </li>
+      <li>
+        <strong>Pressure for 360° Bending:</strong><br>
+        ~200 kPa for a = 8 mm, t = 2 mm, L = 160 mm
+      </li>
+    </ul>
+
+    <h4>Mesh Size Reference</h4>
+    <ul>
+      <li>Nodes: ~160,700</li>
+      <li>Elements: ~101,000</li>
+    </ul>
+
+    <h4>Design Trade-offs</h4>
+    <ul>
+      <li>More wall thickness → Less bending</li>
+      <li>Higher fiber stiffness → Greater control, less flexibility</li>
+    </ul>
+
+    <h3>Section 3: Assembly</h3>
     <p>
-      <strong>Goal:</strong> Introduce hyperelastic materials in ANSYS and demonstrate how
-      to assemble multiple soft fingers into one gripper.
+      Combine your actuator body, strain-limiting layer, and fiber reinforcement into
+      a single assembly in ANSYS. Define appropriate contact interactions and verify
+      that all parts share consistent mesh interfaces.
     </p>
-    <ol>
-      <li><strong>Material Models:</strong> Use hyperelastic material data (e.g., Neo-Hookean, Ogden, or Mooney-Rivlin) to simulate silicone-like behavior.</li>
-      <li><strong>Assembly:</strong> Combine four finger models into a single gripper, ensuring proper alignment and contact between parts.</li>
-      <li><strong>Connections & Constraints:</strong> Define how each finger attaches to a base or manifold for uniform pressure distribution.</li>
-    </ol>
+
+    <h3>Section 4: Optimizing & Simulating Output Values</h3>
     <p>
-      <em>Tip:</em> If you have real-world material test data, use the curve-fitting tools in ANSYS to get more accurate results.
+      Run multiple simulations with varying parameters—fiber angles, thicknesses,
+      pressure loads—to see how each factor influences bending angle, stress, and
+      force output. Summarize your findings to guide design improvements.
     </p>
+
+    <p><em>Modeling Tool:</em> ANSYS Mechanical</p>
   </section>
 
-  <!-- Lab 4: ANSYS - Simulation & Optimization -->
+  <!-- Lab 4: SoRoSim (MATLAB) -->
   <section id="lab4">
-    <h2>Lab 4: Simulation & Post-Processing</h2>
+    <h2>Lab 4: SoRoSim (MATLAB)</h2>
     <p>
-      <strong>Goal:</strong> Apply internal pressure loads to the assembled gripper, run the
-      simulation, and optimize the design based on the results.
+      <strong>SoRoSim</strong> is a MATLAB toolbox for simulating soft, rigid, and hybrid robots
+      using the Geometric Variable Strain (GVS) method. It models soft links as Cosserat rods,
+      capturing bend, twist, stretch, and shear. The GUI lets users build structures, assign
+      degrees of freedom, and apply loads or actuations.
     </p>
-    <ol>
-      <li><strong>Pressure Loading:</strong> Assign internal pressure in each finger’s chamber.</li>
-      <li><strong>Nonlinear Simulation:</strong> Solve for large deformations and contact with a round object.</li>
-      <li><strong>Results Analysis:</strong> Evaluate stress, strain, displacement, and contact forces. Compare predicted gripping force vs. real requirements.</li>
-      <li><strong>Design Optimization:</strong> Adjust geometry, material thickness, or pressure values to achieve the best grip performance.</li>
-    </ol>
     <p>
-      <em>Tip:</em> Experiment with different pressures and note how the finger curvature changes.
-      This helps you understand real-world design trade-offs (e.g., higher pressure = stronger grip but also more stress).
+      The new version, <strong>Differential_SoRoSim</strong>, adds analytical derivatives for
+      faster, more efficient analysis. This is especially useful when dealing with the
+      nonlinear systems typical of soft robotics.
+    </p>
+
+    <h3>Solver Improvements</h3>
+    <ul>
+      <li><em>Statics.m</em> could fail to converge with the default solver (<em>fsolve</em>) if
+          the system stiffness is very high.</li>
+      <li>By switching to a Newton-Raphson approach (with a numerical Jacobian), the solver can
+          handle complex geometries and large deflections more robustly.</li>
+      <li>This iterative method updates the residual, approximates the Jacobian, and applies a
+          damped Newton step—ideal for soft robotics’ nonlinearities.</li>
+    </ul>
+
+    <!-- Example figure -->
+    <figure>
+      <img src="sorosim_example.png" alt="SoRoSim Visualization" width="450">
+      <figcaption>An example of multi-link simulation in SoRoSim.</figcaption>
+    </figure>
+
+    <p>
+      <em>Tip:</em> If you’re new to MATLAB, start by exploring the sample scripts in SoRoSim’s
+      documentation. Try adjusting material stiffness or segment length, then rerun the
+      simulations to see how it affects bending or force output.
     </p>
   </section>
 
