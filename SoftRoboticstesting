@@ -1,12 +1,13 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Soft Robotics Lab Series</title>
-  <!-- Link to your external CSS file -->
+  <!-- Link to your external CSS file if you have one -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Header with Navigation -->
@@ -82,15 +83,15 @@
     <h3>Section 2: BC, Loads, and Contact Conditions</h3>
     <p>
       Define frictional or bonded contacts where necessary (e.g., between finger segments).
-      Apply a ramped pressure load (e.g., up to 30 kPa) over a certain time step to simulate
+      Apply a ramped pressure load (e.g., up to 30 kPa) over a certain time step to simulate
       inflation. Constrain the base or mounting points appropriately.
     </p>
 
+    <!-- Example images or figures (optional) -->
     <figure>
       <img src="lab11.png" alt="Lab 1 Geometry Example" width="500">
       <figcaption>Geometry (XY view) showing internal walls where pressure is applied.</figcaption>
     </figure>
-
     <figure>
       <img src="lab1.png" alt="Lab 1 Simulation Results" width="500">
       <figcaption>Pressure vs Time chart from a 2-second simulation ramp.</figcaption>
@@ -122,30 +123,30 @@
 
     <h3>Actuator Body (Eco Flex, Neo-Hookean)</h3>
     <ul>
-      <li>Shear Modulus <em>μ̄</em> = 0.314 MPa</li>
+      <li>Shear Modulus <em>μ̄</em> = 0.314 MPa</li>
     </ul>
 
     <h3>Strain-Limiting Layer (Fiberglass, Linear Elastic)</h3>
     <ul>
-      <li>Young’s Modulus ≈ 7.9 MPa (combined)</li>
+      <li>Young’s Modulus ≈ 7.9 MPa (combined)</li>
     </ul>
 
     <h3>Fiber Reinforcement (Kevlar, Linear Elastic)</h3>
     <ul>
-      <li>Young’s Modulus <em>E</em> = 31,076 MPa</li>
+      <li>Young’s Modulus <em>E</em> = 31,076 MPa</li>
       <li>
         <strong>Torque for Hemi-circular Section:</strong><br>
-        M<sub>ₐ</sub> = 0.34 × a³ × P<sub>ₐ</sub>  
-        Given a = 8 mm, P<sub>ₐ</sub> = 60 kPa → M<sub>ₐ</sub> ≈ 10.46 N·mm
+        M<sub>a</sub> = 0.34 × a³ × P<sub>a</sub> <br>
+        Given a = 8 mm, P<sub>a</sub> = 60 kPa → M<sub>a</sub> ≈ 10.46 N·mm
       </li>
       <li>
         <strong>Force Output at Tip:</strong><br>
-        F = [(4a³ + 3πa²b)/6L] × P<sub>ₐ</sub>  
-        For a = 8 mm, b = 2 mm, L = 10 mm → F ≈ 8.5 N
+        F = [(4a³ + 3πa²b)/6L] × P<sub>a</sub> <br>
+        For a = 8 mm, b = 2 mm, L = 10 mm → F ≈ 8.5 N
       </li>
       <li>
         <strong>Pressure for 360° Bending:</strong><br>
-        ~200 kPa for a = 8 mm, t = 2 mm, L = 160 mm
+        ~200 kPa for a = 8 mm, t = 2 mm, L = 160 mm
       </li>
     </ul>
 
@@ -195,12 +196,12 @@
 
     <h3>Solver Improvements</h3>
     <ul>
-      <li><em>Statics.m</em> could fail to converge with the default solver (<em>fsolve</em>) if
-          the system stiffness is very high.</li>
-      <li>By switching to a Newton-Raphson approach (with a numerical Jacobian), the solver can
-          handle complex geometries and large deflections more robustly.</li>
-      <li>This iterative method updates the residual, approximates the Jacobian, and applies a
-          damped Newton step—ideal for soft robotics’ nonlinearities.</li>
+      <li><em>Statics.m</em> could fail to converge with the default solver (<em>fsolve</em>)
+          if the system stiffness is very high.</li>
+      <li>By switching to a Newton-Raphson approach (with a numerical Jacobian), the solver
+          can handle complex geometries and large deflections more robustly.</li>
+      <li>This iterative method updates the residual, approximates the Jacobian, and applies
+          a damped Newton step—ideal for soft robotics’ nonlinearities.</li>
     </ul>
 
     <figure>
@@ -214,20 +215,21 @@
       simulations to see how it affects bending or force output.
     </p>
 
-    <!-- Interactive Quiz Section -->
-    <section id="interactiveQuiz">
+    <!-- Interactive Quiz Section for Lab 4 -->
+    <section id="interactiveQuiz" style="margin-top: 2rem;">
       <h3>Test Your SoRoSim Knowledge</h3>
-      <p><strong>Question:</strong> In a few words, what is the purpose of SoRoSim?</p>
+      <p><strong>Question:</strong> In a few words, what is the primary purpose of SoRoSim?</p>
       <input type="text" id="quizAnswer" placeholder="Type your answer here..." />
       <button onclick="checkSoRoSimAnswer()">Check Answer</button>
       <button onclick="showSoRoSimHint()">Need Help?</button>
-      <p id="quizFeedback" style="margin-top:10px; font-weight:bold;"></p>
-      <p id="quizHint" style="display:none;">
-        <em>Hint:</em> Think about what SoRoSim does with soft, rigid, and hybrid robots. It uses the GVS method 
-        to model <strong>what</strong> exactly?
+
+      <p id="quizFeedback" style="margin-top: 10px; font-weight: bold;"></p>
+      <p id="quizHint" style="display: none;">
+        <em>Hint:</em> Think about how SoRoSim uses the GVS method for soft (and possibly hybrid)
+        robotics. It helps you <strong>simulate and analyze</strong> robots that can bend, twist,
+        and stretch.
       </p>
     </section>
-
   </section>
 
   <!-- PDF Download Section -->
@@ -240,9 +242,7 @@
   <!-- Downloads Section -->
   <section id="downloads">
     <h2>Downloads</h2>
-    <p>
-      Below are links to the resources you’ll need for the labs:
-    </p>
+    <p>Below are links to the resources you’ll need for the labs:</p>
     <ul>
       <li><a href="SoftRoboticsLab_Models.zip" download>Soft Robotics CAD Models (ZIP)</a></li>
       <li><a href="SoRoSimScripts.zip" download>SoRoSim MATLAB Scripts (ZIP)</a></li>
@@ -288,7 +288,7 @@
   <!-- Back to the top button -->
   <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
 
-  <!-- JavaScript -->
+  <!-- JavaScript: Scroll and Quiz Logic -->
   <script>
     // "Back to Top" function
     function scrollToTop() {
@@ -300,17 +300,18 @@
       const userAnswer = document.getElementById('quizAnswer').value.trim().toLowerCase();
       const feedback = document.getElementById('quizFeedback');
 
-      // Basic check for key terms
-      // You can add more robust checks as needed
+      // Very basic keyword check:
+      // The user must mention some concept of "simulate" or "simulation"
+      // AND "soft" or "robot" or "robotics"
       if (
-        userAnswer.includes('simulation') &&
-        (userAnswer.includes('soft') || userAnswer.includes('robots')) 
+        (userAnswer.includes('simulate') || userAnswer.includes('simulation')) &&
+        (userAnswer.includes('soft') || userAnswer.includes('robot'))
       ) {
         feedback.style.color = 'green';
-        feedback.textContent = 'Correct! SoRoSim is indeed a MATLAB toolbox for simulating soft (and hybrid) robots.';
+        feedback.textContent = 'Correct! SoRoSim is indeed a toolbox to model and simulate soft (and hybrid) robots.';
       } else {
         feedback.style.color = 'red';
-        feedback.textContent = 'Not quite right. Try again, or click "Need Help?" for a hint.';
+        feedback.textContent = 'Not quite right. Try again or click "Need Help?" for a hint.';
       }
     }
 
