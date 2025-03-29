@@ -221,7 +221,7 @@
     <h3>What is the value of the [1,2] cell in qqd in two sig figs with a force input of 10 N.</h3>
     <p><strong>Question:</strong> In a few words, what is the primary purpose of SoRoSim?</p>
 
-    <input type="text" id="quizAnswer" placeholder="-9.8" />
+    <input type="text" id="quizAnswer" placeholder="Type your answer here" />
     <button onclick="checkSoRoSimAnswer()">Check Answer</button>
     <button onclick="showSoRoSimHint()">Need Help?</button>
 
@@ -309,12 +309,12 @@
     // Check if it's close to -9.8 (within ±0.01)
     if (!isNaN(userAnswer) && Math.abs(userAnswer - (-9.8)) <= 0.01) {
       feedback.style.color = 'green';
-      feedback.textContent =
-        'Correct! The [1,2] cell in qqd is about -9.8 in two sig figs.';
+      feedback.textContent = 'Correct! The [1,2] cell in qqd is about -9.8 in two sig figs.';
+       
     } else {
       feedback.style.color = 'red';
-      feedback.textContent =
-        'Not quite right. Try again or click "Need Help?" for a hint.';
+      feedback.textContent = 'Not quite right. Try again or click "Need Help?" for a hint.';
+       
     }
   }
 
