@@ -294,41 +294,41 @@
   <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
 
   <!-- JavaScript -->
-    <script>
-      // Example "Back to Top" function
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      
-    function checkSoRoSimAnswer() {
-      const userAnswer = document.getElementById('quizAnswer').value.trim().toLowerCase();
-      const feedback = document.getElementById('quizFeedback');
+<script>
+  // Example "Back to Top" function
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-      // Basic keyword check:
-      // The user must mention "simulate" or "simulation" AND "soft" or "robot/robotics"
-      if (
-        (userAnswer.includes('simulate') || userAnswer.includes('simulation')) &&
-        (userAnswer.includes('soft') || userAnswer.includes('robot'))
-      ) {
-        feedback.style.color = 'green';
-        feedback.textContent = 'Correct';
-          'Correct! SoRoSim is a toolbox to model and simulate soft (and hybrid) robots.';
-      } else {
-        feedback.style.color = 'red';
-        feedback.textContent = 'Wrong';
-          'Not quite right. Try again or click "Need Help?" for a hint.';
-      }
-    }
+  // NEW numeric check for -9.8
+  function checkSoRoSimAnswer() {
+    // Grab what the user typed and convert to a number
+    const userAnswer = parseFloat(document.getElementById('quizAnswer').value.trim());
+    const feedback = document.getElementById('quizFeedback');
 
-    function showSoRoSimHint() {
-      document.getElementById('quizHint').style.display = 'block';
+    // Check if it's close to -9.8 (within ±0.01)
+    if (!isNaN(userAnswer) && Math.abs(userAnswer - (-9.8)) <= 0.01) {
+      feedback.style.color = 'green';
+      feedback.textContent =
+        'Correct! The [1,2] cell in qqd is about -9.8 in two sig figs.';
+    } else {
+      feedback.style.color = 'red';
+      feedback.textContent =
+        'Not quite right. Try again or click "Need Help?" for a hint.';
     }
-  </script>
+  }
+
+  // Keep your hint function
+  function showSoRoSimHint() {
+    document.getElementById('quizHint').style.display = 'block';
+  }
+</script>
+
 
 
     
     
-  </script>
+
 
 </body>
 </html>
