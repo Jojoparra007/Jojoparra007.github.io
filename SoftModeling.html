@@ -218,7 +218,7 @@
     <!--             ----->
     <!-- Interactive Quiz Section for Lab 4 -->
     <section id="interactiveQuiz" style="margin-top: 2rem;">
-    <h3>What is the value of the 1,2 cell in qqd in two sig figs with a force input of 10 N.</h3>
+    <h3>What is the value of the [1,2] cell in qqd in two sig figs with a force input of 10 N.</h3>
     <p><strong>Question:</strong> In a few words, what is the primary purpose of SoRoSim?</p>
 
     <input type="text" id="quizAnswer" placeholder="-9.8" />
@@ -311,11 +311,11 @@
         (userAnswer.includes('soft') || userAnswer.includes('robot'))
       ) {
         feedback.style.color = 'green';
-        feedback.textContent =
+        feedback.textContent = 'Correct';
           'Correct! SoRoSim is a toolbox to model and simulate soft (and hybrid) robots.';
       } else {
         feedback.style.color = 'red';
-        feedback.textContent =
+        feedback.textContent = 'Wrong';
           'Not quite right. Try again or click "Need Help?" for a hint.';
       }
     }
