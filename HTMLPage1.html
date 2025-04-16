@@ -72,6 +72,16 @@
         }
         .card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
 
+        /* 5a. Video sizing inside cards */
+        .card video {
+            width: 100%; /* responsive width */
+            aspect-ratio: 16 / 9; /* force 16:9 frame */
+            height: auto;
+            max-height: 240px; /* prevent giant videos */
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
         /* 6. Contact Form  */
         form {
             display: grid; gap: 1rem; max-width: 600px;
@@ -164,65 +174,4 @@
 
                 <!-- Project 3 -->
                 <article class="card">
-                    <h3>VAD‑Lidar Wind Profiling</h3>
-                    <img src="Project3.png" alt="Lidar wind profile visualization" />
-                    <p>Extracted nocturnal jets & shear layers from tall‑tower lidar to guide turbine siting and blade‑load mitigation strategies.</p>
-                    <a href="Project3.pdf" download>Download PDF Report</a>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="card">
-                    <h3>Cat‑vs‑Dog CNN Classifier</h3>
-                    <img src="Project4.png" alt="Neural‑network class activation map" />
-                    <p>Trained a convolutional network on 25 000 images, achieving 96 % accuracy in species classification—laying groundwork for advanced computer‑vision pipelines.</p>
-                    <a href="Project4.pdf" download>Download PDF Report</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ░░ Contact ░░ -->
-    <section id="contact">
-        <div class="container grid grid-cols-2">
-            <div>
-                <h2>Let’s Talk</h2>
-                <p>Have a collaboration idea or need a CFD wizard on your team? Drop a message—I’ll reply within 24 hours.</p>
-                <p>Email directly ➜ <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
-            </div>
-            <div>
-                <form action="https://formspree.io/f/myzyeode" method="POST">
-                    <label>Name
-                        <input type="text" name="name" required />
-                    </label>
-                    <label>Email
-                        <input type="email" name="email" required />
-                    </label>
-                    <label>Message
-                        <textarea name="message" rows="4" required></textarea>
-                    </label>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ░░ Footer ░░ -->
-    <footer>
-        © 2025 Jose Parra • Built with a splash of caffeine & o4‑mini logic
-    </footer>
-
-    <!-- ░░ Back‑to‑Top ░░ -->
-    <button id="backToTop" aria-label="Back to Top">▲</button>
-
-    <!-- 9.  JavaScript  -->
-    <script>
-        // Back‑to‑top visibility
-        const topBtn = document.getElementById("backToTop");
-        window.addEventListener("scroll", () => {
-            topBtn.style.display = window.scrollY > 400 ? "block" : "none";
-        });
-        topBtn.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"}));
-    </script>
-
-</body>
-</html>
+                    <h3>VAD‑Lidar Wind Profiling</h
