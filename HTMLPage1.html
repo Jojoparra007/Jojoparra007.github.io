@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose Parra – Aerospace Engineer & CFD Specialist</title>
 
-    <!-- 1.  CSS Variables & Base Styles  -->
+    <!-- ───────── CSS VARIABLES & BASE STYLES ───────── -->
     <style>
         :root {
-            /* Color palette */
             --clr-bg: #0e0e11;
             --clr-surface: #1b1b1f;
             --clr-accent: #32b5ff;
@@ -18,99 +17,56 @@
             --trans: 0.25s ease;
             font-size: 16px;
         }
+        *,*::before,*::after{box-sizing:border-box}
+        body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
+        a{color:var(--clr-accent);text-decoration:none}
+        img{max-width:100%;display:block;border-radius:var(--radius)}
+        h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+        section{padding:4rem 1rem}
 
-        *, *::before, *::after { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: "Inter", system-ui, sans-serif;
-            background: var(--clr-bg);
-            color: var(--clr-text);
-            line-height: 1.6;
-        }
-        a { color: var(--clr-accent); text-decoration: none; }
-        img { max-width: 100%; display: block; border-radius: var(--radius); }
-        h1, h2, h3 { line-height: 1.2; margin: 0 0 0.5em; }
-        section { padding: 4rem 1rem; }
+        /* ── Header & Navigation ── */
+        header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
+        .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
+        nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+        nav li{position:relative}
+        nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
+        nav a:hover::after{width:100%}
 
-        /* 2. Header & Navigation  */
-        header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(14, 14, 17, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
-        nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
-        nav li { position: relative; }
-        nav a::after {
-            content: ""; position: absolute; left: 0; bottom: -2px; width: 0%; height: 2px;
-            background: var(--clr-accent); transition: width var(--trans);
-        }
-        nav a:hover::after { width: 100%; }
-        
-        /* 3. Hero / Home Section */
-        #home { text-align: center; background: linear-gradient(135deg,#1b1b1f 0%,#141418 100%); }
-        #home h1 { font-size: clamp(2.5rem,6vw,4rem); color: var(--clr-accent); }
-        #home p { max-width: 720px; margin-inline: auto; color: var(--clr-muted); }
+        /* ── Hero ── */
+        #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
+        #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
+        #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
 
-        /* 4. Layout Helpers  */
-        .container { max-width: 1100px; margin: 0 auto; }
-        .grid {
-            display: grid; gap: 2rem;
-        }
-        @media (min-width: 768px){
-            .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-            .project-grid { grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); }
-        }
-        
-        /* 5. Cards  */
-        .card {
-            background: var(--clr-surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-            transition: transform var(--trans), box-shadow var(--trans);
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
+        /* ── Layout helpers ── */
+        .container{max-width:1100px;margin:0 auto}
+        .grid{display:grid;gap:2rem}
+        @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
 
-        /* 5a. Video sizing inside cards */
-        .card video {
-            width: 100%; /* responsive width */
-            aspect-ratio: 16 / 9; /* force 16:9 frame */
-            height: auto;
-            max-height: 240px; /* prevent giant videos */
-            object-fit: cover;
-            border-radius: var(--radius);
-        }
+        /* ── Cards ── */
+        .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
+        .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
 
-        /* 6. Contact Form  */
-        form {
-            display: grid; gap: 1rem; max-width: 600px;
-        }
-        input, textarea, button {
-            padding: 0.75rem 1rem; border-radius: var(--radius);
-            border: 1px solid var(--clr-surface); background: var(--clr-surface); color: var(--clr-text);
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus { outline: 2px solid var(--clr-accent); }
-        button { cursor: pointer; border: none; background: var(--clr-accent); color: #000; transition: background var(--trans); }
-        button:hover { background: #53c5ff; }
+        /* Video wrapper keeps size on play */
+        .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
+        .video-wrapper video{width:100%;height:100%;object-fit:cover}
 
-        /* 7. Footer  */
-        footer { text-align: center; padding: 2rem 1rem; background: #1b1b1f; color: var(--clr-muted); font-size: 0.875rem; }
+        /* ── Contact form ── */
+        form{display:grid;gap:1rem;max-width:600px}
+        input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
+        input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
+        button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
+        button:hover{background:#53c5ff}
 
-        /* 8. Back‑to‑top Button */
-        #backToTop {
-            position: fixed; right: 1.25rem; bottom: 1.25rem; padding: 0.75rem 1rem;
-            border: none; border-radius: var(--radius); background: var(--clr-accent);
-            color: #000; font-weight: 600; cursor: pointer; display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-        }
-        #backToTop:hover { background: #53c5ff; }
+        /* ── Footer ── */
+        footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
+
+        /* ── Back‑to‑top ── */
+        #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+        #backToTop:hover{background:#53c5ff}
     </style>
 </head>
 <body>
-
-    <!-- ░░ Header ░░ -->
+    <!-- Header -->
     <header>
         <div class="nav-container">
             <h1 class="logo">Jose Parra</h1>
@@ -125,7 +81,7 @@
         </div>
     </header>
 
-    <!-- ░░ Hero / Home ░░ -->
+    <!-- Hero -->
     <section id="home">
         <div class="container">
             <h1>Aerospace Engineer • CFD Specialist • Maker</h1>
@@ -133,33 +89,93 @@
         </div>
     </section>
 
-    <!-- ░░ About ░░ -->
+    <!-- About -->
     <section id="about">
         <div class="container grid grid-cols-2">
             <div>
                 <h2>About Me</h2>
                 <p>I pair rigorous theory with hands‑on practice—leveraging <strong>ANSYS, OpenFOAM, MATLAB, and SolidWorks</strong> to solve aerospace and energy challenges. When I’m not optimizing meshes or crunching Navier‑Stokes, you’ll find me in the gym chasing that 405 lb bench‑press goal.</p>
-                <p>Let’s collaborate on cutting‑edge CFD, wind energy analytics, or soft‑robotics simulations. I bring curiosity, grit, and a knack for communicating complex ideas clearly.</p>
+                <p>Let’s collaborate on cutting‑edge CFD, wind‑energy analytics, or soft‑robotics simulations. I bring curiosity, grit, and a knack for communicating complex ideas clearly.</p>
             </div>
-            <div>
-                <!-- optional portrait or illustration -->
-                <img src="portrait.jpg" alt="Portrait of Jose Parra" />
-            </div>
+            <div><img src="portrait.jpg" alt="Portrait of Jose Parra"></div>
         </div>
     </section>
 
-    <!-- ░░ Projects ░░ -->
+    <!-- Projects -->
     <section id="projects">
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="grid project-grid">
-
-                <!-- Project 1 -->
+                <!-- Project 1 -->
                 <article class="card">
                     <h3>2‑D Mixing Chamber CFD</h3>
                     <p>High‑order WENO advection meets Crank‑Nicolson diffusion—yielding detailed flow & scalar‑mixing insights for industrial reactors.</p>
-                    <video controls muted playsinline disablepictureinpicture controlslist="nofullscreen noremoteplayback">
-                        <source src="YMovie.mp4" type="video/mp4" />
-                    </video>
+                    <div class="video-wrapper">
+                        <video controls muted playsinline disablepictureinpicture controlslist="nofullscreen noremoteplayback nodownload">
+                            <source src="YMovie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                     <a href="CFDfinalreport.pdf" download>Download PDF Report</a>
-                </
+                </article>
+
+                <!-- Project 2 -->
+                <article class="card">
+                    <h3>RS‑25 Propellant Feed Analysis</h3>
+                    <img src="Project2.png" alt="RS‑25 feed system schematic">
+                    <p>A component‑level model of LH<sub>2</sub>/LOX flow, turbo‑pump dynamics, and injector design—driving thrust predictions for NASA’s workhorse engine.</p>
+                    <a href="Project2.pdf" download>Download PDF Report</a>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="card">
+                    <h3>VAD‑Lidar Wind Profiling</h3>
+                    <img src="Project3.png" alt="Lidar wind profile visualization">
+                    <p>Extracted nocturnal jets & shear layers from tall‑tower lidar to guide turbine siting and blade‑load mitigation strategies.</p>
+                    <a href="Project3.pdf" download>Download PDF Report</a>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="card">
+                    <h3>Cat‑vs‑Dog CNN Classifier</h3>
+                    <img src="Project4.png" alt="Neural‑network class activation map">
+                    <p>Trained a convolutional network on 25 000 images, achieving 96 % accuracy in species classification—laying groundwork for advanced computer‑vision pipelines.</p>
+                    <a href="Project4.pdf" download>Download PDF Report</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container grid grid-cols-2">
+            <div>
+                <h2>Let’s Talk</h2>
+                <p>Have a collaboration idea or need a CFD wizard on your team? Drop a message—I’ll reply within 24 hours.</p>
+                <p>Email ➜ <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
+            </div>
+            <div>
+                <form action="https://formspree.io/f/myzyeode" method="POST">
+                    <label>Name<input type="text" name="name" required></label>
+                    <label>Email<input type="email" name="email" required></label>
+                    <label>Message<textarea name="message" rows="4" required></textarea></label>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>© 2025 Jose Parra • Built with caffeine & logical飞艇</footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Back to Top">▲</button>
+
+    <!-- JS -->
+    <script>
+        const topBtn=document.getElementById("backToTop");
+        window.addEventListener("scroll",()=>{topBtn.style.display=window.scrollY>400?"block":"none"});
+        topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+    </script>
+</body>
+</html>
