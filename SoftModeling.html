@@ -1,192 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Parra – Aerospace Engineer & CFD Specialist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soft Robotics Lab Series</title>
 
-    <!-- ───────── CSS VARIABLES & BASE STYLES ───────── -->
-    <style>
-        :root {
-            --clr-bg: #0e0e11;
-            --clr-surface: #1b1b1f;
-            --clr-accent: #32b5ff;
-            --clr-text: #f2f2f2;
-            --clr-muted: #9fa3ad;
-            --radius: 0.75rem;
-            --trans: 0.25s ease;
-            font-size: 16px;
-        }
-        *,*::before,*::after{box-sizing:border-box}
-        body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
-        a{color:var(--clr-accent);text-decoration:none}
-        img{max-width:100%;display:block;border-radius:var(--radius)}
-        h1,h2,h3{line-height:1.2;margin:0 0 .5em}
-        section{padding:4rem 1rem}
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-        /* ── Header & Navigation ── */
-        header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
-        .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
-        nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
-        nav li{position:relative}
-        nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
-        nav a:hover::after{width:100%}
+  <style>
+    :root{
+      --clr-primary:#0057B7;   /* deep blue */
+      --clr-accent:#FFB703;    /* warm yellow */
+      --clr-bg:#f8f9fa;
+      --clr-text:#1a1a1a;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Inter',sans-serif;
+      margin:0;
+      line-height:1.6;
+      background:var(--clr-bg);
+      color:var(--clr-text);
+    }
+    /* ===== HEADER & NAV ===== */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:var(--clr-primary);
+      color:#fff;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:.75rem 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.15);
+    }
+    header h1{margin:0;font-size:1.25rem;letter-spacing:.03rem;}
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:1rem;
+    }
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:500;
+      transition:opacity .25s ease;
+    }
+    nav a:hover{opacity:.75;}
 
-        /* ── Hero ── */
-        #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
-        #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
-        #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
+    /* ===== SECTION ===== */
+    section{
+      padding:2.5rem 1rem;
+      max-width:960px;
+      margin:auto;
+    }
+    section:nth-of-type(odd){background:#ffffff;}
 
-        /* ── Layout helpers ── */
-        .container{max-width:1100px;margin:0 auto}
-        .grid{display:grid;gap:2rem}
-        @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
+    h2{margin-top:0;font-size:1.75rem;color:var(--clr-primary);}    
+    h3{margin-bottom:.5rem;color:var(--clr-accent);} 
 
-        /* ── Cards ── */
-        .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
-        .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
+    figure{margin:1.5rem 0;text-align:center;}
+    figure img{max-width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);}  
+    figcaption{font-size:.9rem;color:#555;margin-top:.35rem;}
 
-        /* Video wrapper keeps size */
-        .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
-        .video-wrapper video{width:100%;height:100%;object-fit:cover}
+    ul,ol{margin-top:.5rem;margin-left:1.25rem;}
 
-        /* Constrain project images */
-        .card img{width:100%;height:auto;max-height:240px;object-fit:cover;border-radius:var(--radius);margin-bottom:1rem}
+    /* ===== BUTTONS & FORM ELEMENTS ===== */
+    button,
+    input[type="submit"],
+    .btn{
+      background:var(--clr-accent);
+      color:#262626;
+      border:none;
+      padding:.5rem 1.1rem;
+      border-radius:4px;
+      font-weight:600;
+      cursor:pointer;
+      transition:background .3s ease;
+    }
+    button:hover,
+    input[type="submit"]:hover,
+    .btn:hover{
+      background:#ffa31a;
+    }
+    input,textarea{
+      width:100%;
+      padding:.6rem .7rem;
+      margin:.3rem 0 1rem;
+      border:1px solid #ccd;
+      border-radius:4px;
+      font-family:inherit;
+    }
 
-        /* ── Contact form ── */
-        form{display:grid;gap:1rem;max-width:600px}
-        input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
-        input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
-        button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
-        button:hover{background:#53c5ff}
+    /* ===== BACK-TO-TOP ===== */
+    #backToTop{
+      position:fixed;
+      bottom:1.5rem;
+      right:1.5rem;
+      display:none;
+      box-shadow:0 3px 6px rgba(0,0,0,.2);
+    }
 
-        /* ── Footer ── */
-        footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
-
-        /* ── Back‑to‑top ── */
-        #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-        #backToTop:hover{background:#53c5ff}
-    </style>
+    /* ===== RESPONSIVE NAV (hamburger) ===== */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      gap:4px;
+      cursor:pointer;
+    }
+    .hamburger span{width:24px;height:3px;background:#fff;}
+    @media(max-width:768px){
+      nav ul{position:fixed;inset:0 0 auto auto;width:200px;height:100vh;background:var(--clr-primary);flex-direction:column;padding-top:4rem;transform:translateX(100%);transition:transform .3s ease;}
+      nav ul.open{transform:translateX(0);}
+      .hamburger{display:flex;}
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <h1 class="logo">Jose Parra</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <h1>Soft Robotics Lab Series</h1>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#lab1">Lab 1</a></li>
+        <li><a href="#lab2">Lab 2</a></li>
+        <li><a href="#lab3">Lab 3</a></li>
+        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Hero -->
+  <main>
+    <!-- Home Section -->
     <section id="home">
-        <div class="container">
-            <h1>Welcome to My Website</h1>
-            <p>Welcome to my website! I'm Jose Parra, an aerospace engineer with a dedication to innovation and practical problem-solving. My work spans various fields, including computational fluid dynamics, wind energy analysis, and advanced neural networks. With hands-on experience in tools like SolidWorks, ANSYS, MATLAB, and HTML, I approach complex engineering challenges with practical, effective solutions.</p>
-        </div>
+      <h2>Welcome</h2>
+      <p>
+        Welcome to the <strong>Soft Robotics Lab Series</strong> — a hands‑on guide to designing and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
+        Through curated, bite‑sized labs you’ll master geometry setup, material choices, boundary conditions, and performance optimisation.
+      </p>
     </section>
 
-    <!-- About -->
-    <section id="about">
-        <div class="container grid grid-cols-2">
-            <div>
-                <h2>About Me</h2>
-                <p>I'm Jose Parra, an aerospace engineer with a strong foundation in both theoretical knowledge and hands-on experience. I graduated with a degree in Aerospace Engineering, where I developed a deep expertise in computational fluid dynamics, wind energy analysis, and systems modeling. My technical skills include proficiency in SolidWorks, ANSYS, MATLAB, and HTML, allowing me to approach complex engineering challenges with practical, effective solutions.</p>
-                <p>Currently, I’m working on expanding my knowledge and applying my skills to new projects that push the boundaries of what's possible. Whether I'm analyzing aerodynamic performance, optimizing energy systems, or developing software tools, my goal is to contribute meaningfully to the field and create work that drives innovation forward.</p>
-                <p>Outside of engineering, I’m dedicated to fitness, tackling high-intensity weight training, and staying active. Thank you for visiting my website, and I look forward to connecting with those who share a passion for engineering, innovation, and collaboration!</p>
-            </div>
-            <div><img src="Headshot.png" alt="Portrait of Jose Parra"></div>
-        </div>
+    <!-- Overview Section -->
+    <section id="overview">
+      <h2>Project Overview</h2>
+      <p>The series walks you from first principles to advanced concepts such as fibre‑reinforcement and continuum modelling. By the end, you’ll have practical experience in:</p>
+      <ul>
+        <li>Hyper‑elastic material modelling & meshing strategies in ANSYS</li>
+        <li>Applying loads, pressures and BCs correctly</li>
+        <li>Building multi‑finger or fibre‑reinforced assemblies</li>
+        <li>Post‑processing & design optimisation</li>
+        <li>Leveraging <strong>SoRoSim</strong> for continuum soft‑robotic simulation</li>
+      </ul>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="grid project-grid">
-                <!-- Project 1 -->
-                <article class="card">
-                    <h3>Computational Fluid Dynamics (CFD)</h3>
-                    <p>This project utilizes advanced Computational Fluid Dynamics (CFD) to simulate a two-dimensional mixing chamber driven by rotating disks, solving the Navier-Stokes, continuity, and mass fraction transport equations to capture complex fluid flow and scalar distribution. High-precision numerical methods—such as WENO schemes for advection, Crank-Nicolson for diffusion, and multigrid solvers for pressure correction—ensure accurate and stable results with realistic boundary conditions. By analyzing key metrics like kinetic energy and scalar mixing efficiency, the project provides critical insights for optimizing mixing processes in industrial applications like chemical reactors and environmental engineering.</p>
-                    <div class="video-wrapper">
-                        <video controls muted playsinline disablepictureinpicture controlslist="nofullscreen noremoteplayback nodownload">
-                            <source src="YMovie.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <a href="CFDfinalreport.pdf" download>Download Project Report (PDF)</a>
-                </article>
+    <!-- Lab 1 -->
+    <section id="lab1">
+      <h2>Lab 1 | Pneumatic Gripper</h2>
+      <h3>Objective</h3>
+      <p>Model a four‑finger pneumatic gripper capable of lifting a cylindrical object.</p>
+      <h3>Expected Outcome</h3>
+      <p>Gain fluency with ANSYS workbench: geometry, meshing, material assignment and boundary conditions.</p>
 
-                <!-- Project 2 -->
-                <article class="card">
-                    <h3>NASA Propellant Feed System</h3>
-                    <img src="Project2.png" alt="RS-25 propellant feed system schematic">
-                    <p>This project provides a comprehensive analysis of the RS-25 rocket engine's propellant feed system, focusing on the flow paths of liquid hydrogen and liquid oxygen, their combustion in the preburner, and injection into the main combustion chamber at full power. It systematically examines each component—including fluid properties, turbo pumps, flow splits, preburner dynamics, main injectors, thrust chamber, nozzle design, and thrust calculations—to understand their roles in overall engine performance. The analysis highlights how precise calculations and optimization of each element contribute to the engine's efficiency and thrust capabilities in aerospace applications.</p>
-                    <a href="Project2.pdf" download>Download Project 2 Report (PDF)</a>
-                </article>
+      <figure>
+        <img src="lab11.png" alt="Lab 1 geometry (finger channels)">
+        <figcaption>Geometry view showing internal pressure channels.</figcaption>
+      </figure>
+      <figure>
+        <img src="lab1.png" alt="Lab 1 simulation results">
+        <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs. time.</figcaption>
+      </figure>
+    </section>
 
-                <!-- Project 3 -->
-                <article class="card">
-                    <h3>VAD Lidar</h3>
-                    <img src="Project3.png" alt="VAD Lidar visualization">
-                    <p>This project analyzes wind data from a specific site using Vector Azimuth Display (VAD) to extract wind speed and direction profiles over time and height, aiming to optimize wind energy generation. The analysis reveals significant wind patterns, including frequent nocturnal low-level jets, diurnal variations, and notable vertical and directional wind shear, which have important implications for wind turbine design and operation. Understanding these wind characteristics is crucial for optimizing turbine performance, increasing energy output, and ensuring the longevity of turbine components.</p>
-                    <a href="Project3.pdf" download>Download Project 3 Report (PDF)</a>
-                </article>
+    <!-- Lab 2-->
+    <section id="lab2">
+      <h2>Lab 2 | Geometry & Meshing Deep‑Dive</h2>
+      <p><strong>Goal:</strong> refine geometry and mesh to capture large deformations.</p>
+      <ol>
+        <li><strong>Detailed geometry:</strong> include strain‑limiting layers or sensor pockets.</li>
+        <li><strong>Meshing strategy:</strong> choose element types fit for hyper‑elastic materials.</li>
+        <li><strong>Quality checks:</strong> examine aspect ratio, skewness, orthogonality.</li>
+      </ol>
+    </section>
 
-                <!-- Project 4 -->
-                <article class="card">
-                    <h3>Machine Training Model Images for Cat and Dogs</h3>
-                    <img src="Project4.png" alt="Cat vs Dog CNN visualization">
-                    <p>It's important to distinguish between species; we all know what a cat and dog looks like, but a machine doesn’t. The one advantage of using a computer is its processing speed. In this project, I program in Python an application that is able to tell the difference between a cat and dog using convolutional and pooling layers. The model will be trained by feeding it 25,000 pictures of cats and dogs.</p>
-                    <a href="Project4.pdf" download>Download Project 4 Report (PDF)</a>
-                </article>
-            </div>
-        </div>
+    <!-- Lab 3 -->
+    <section id="lab3">
+      <h2>Lab 3 | Fibre‑Reinforced Actuators</h2>
+      <p>Compare stiffness, bending limits and output forces of reinforced vs. un‑reinforced designs.</p>
+      <h3>Key Properties</h3>
+      <ul>
+        <li><strong>Eco‑Flex body:</strong> μ̄ ≈ 0.314 MPa</li>
+        <li><strong>Fibreglass layer:</strong> E ≈ 7.9 MPa</li>
+        <li><strong>Kevlar fibres:</strong> E ≈ 31 GPa</li>
+      </ul>
+    </section>
+
+    <!-- Lab 4 -->
+    <section id="lab4">
+      <h2>Lab 4 | SoRoSim (MATLAB)</h2>
+      <p><strong>SoRoSim</strong> models soft links as Cosserat rods using the Geometric Variable Strain method.</p>
+
+      <figure>
+        <img src="lab4.png" alt="SoRoSim multi‑link visualisation">
+        <figcaption>Multi‑segment soft robot in <em>SoRoSim</em>.</figcaption>
+      </figure>
+
+      <!-- Interactive Quiz -->
+      <div id="interactiveQuiz" style="margin-top:2rem;">
+        <h3>Quick Quiz</h3>
+        <p>What is the primary purpose of SoRoSim?</p>
+        <input type="text" id="quizAnswer" placeholder="Your answer…">
+        <button id="checkBtn">Check</button>
+        <button id="hintBtn" class="btn btn-light">Hint</button>
+        <p id="quizFeedback" style="font-weight:600;margin-top:.5rem;"></p>
+        <p id="quizHint" style="display:none;color:#555;">Hint: It lets you <em>simulate and analyse</em> soft‑robotic systems that bend, twist &amp; stretch.</p>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads">
+      <h2>Downloads</h2>
+      <p>All resources include a README for quick setup.</p>
+      <ul>
+        <li><a href="SoftRoboticsLab_Models.zip" download>CAD Models (ZIP)</a></li>
+        <li><a href="SoRoSimScripts.zip" download>MATLAB Scripts (ZIP)</a></li>
+        <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project (ZIP)</a></li>
+        <li><a href="MaterialData.xlsx" download>Material Data (XLSX)</a></li>
+        <li><a href="SoftRobotics.pdf" download>Project Report (PDF)</a></li>
+      </ul>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-        <div class="container grid grid-cols-2">
-            <div>
-                <h2>Contact</h2>
-                <p>If you’d like to get in touch, feel free to send me an email at <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.</p>
-            </div>
-            <div>
-                <form action="https://formspree.io/f/myzyeode" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+      <h2>Contact</h2>
+      <p>Have a question? Reach out → <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
+      <form action="https://formspree.io/f/myzyeode" method="POST" style="margin-top:1rem;max-width:480px;">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <input type="submit" value="Send">
+      </form>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2024 Jose Parra. All rights reserved.
-    </footer>
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Back to top">▲</button>
 
-    <!-- Back to Top -->
-    <button id="backToTop" aria-label="Back to Top">▲</button>
+  <!-- Footer -->
+  <footer style="text-align:center;padding:1rem 0;font-size:.9rem;background:#fafafa;color:#666;">
+    © 2025 Jose Parra. All rights reserved.
+  </footer>
 
-    <!-- JS for Back-to-top -->
-    <script>
-        const topBtn = document.getElementById("backToTop");
-        window.addEventListener("scroll", () => { topBtn.style.display = window.scrollY > 400 ? "block" : "none"; });
-        topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-    </script>
+  <!-- JS -->
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navList   = document.getElementById('nav-list');
+    hamburger.addEventListener('click',()=>navList.classList.toggle('open'));
+    hamburger.addEventListener('keypress',(e)=>{ if(e.key==='Enter') navList.classList.toggle('open'); });
+
+    // Back‑to‑top button
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>{
+      (window.scrollY>400)? topBtn.style.display='block' : topBtn.style.display='none';
+    });
+    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // Quiz logic
+    const checkBtn = document.getElementById('checkBtn');
+    const hintBtn  = document.getElementById('hintBtn');
+    checkBtn.addEventListener('click',()=>{
+      const ans = document.getElementById('quizAnswer').value.toLowerCase();
+      const feedback = document.getElementById('quizFeedback');
+      feedback.style.color = (ans.includes('simulate'))? 'green':'red';
+      feedback.textContent = (ans.includes('simulate'))? 'Nice! You got it.' : 'Not quite — try again or press hint.';
+    });
+    hintBtn.addEventListener('click',()=>document.getElementById('quizHint').style.display='block');
+  </script>
 </body>
 </html>
