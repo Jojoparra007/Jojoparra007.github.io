@@ -1,334 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soft Robotics Lab Series</title>
-  <!-- Link to your external CSS file -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Parra – Aerospace Engineer & CFD Specialist</title>
+
+    <!-- ───────── CSS VARIABLES & BASE STYLES ───────── -->
+    <style>
+        :root {
+            --clr-bg: #0e0e11;
+            --clr-surface: #1b1b1f;
+            --clr-accent: #32b5ff;
+            --clr-text: #f2f2f2;
+            --clr-muted: #9fa3ad;
+            --radius: 0.75rem;
+            --trans: 0.25s ease;
+            font-size: 16px;
+        }
+        *,*::before,*::after{box-sizing:border-box}
+        body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
+        a{color:var(--clr-accent);text-decoration:none}
+        img{max-width:100%;display:block;border-radius:var(--radius)}
+        h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+        section{padding:4rem 1rem}
+
+        /* ── Header & Navigation ── */
+        header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
+        .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
+        nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+        nav li{position:relative}
+        nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
+        nav a:hover::after{width:100%}
+
+        /* ── Hero ── */
+        #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
+        #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
+        #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
+
+        /* ── Layout helpers ── */
+        .container{max-width:1100px;margin:0 auto}
+        .grid{display:grid;gap:2rem}
+        @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
+
+        /* ── Cards ── */
+        .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
+        .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
+
+        /* Video wrapper keeps size */
+        .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
+        .video-wrapper video{width:100%;height:100%;object-fit:cover}
+
+        /* Constrain project images */
+        .card img{width:100%;height:auto;max-height:240px;object-fit:cover;border-radius:var(--radius);margin-bottom:1rem}
+
+        /* ── Contact form ── */
+        form{display:grid;gap:1rem;max-width:600px}
+        input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
+        input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
+        button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
+        button:hover{background:#53c5ff}
+
+        /* ── Footer ── */
+        footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
+
+        /* ── Back‑to‑top ── */
+        #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+        #backToTop:hover{background:#53c5ff}
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">Jose Parra</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Header with Navigation -->
-  <header>
-    <h1>Soft Robotics Lab Series</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#lab1">Lab 1</a></li>
-        <li><a href="#lab2">Lab 2</a></li>
-        <li><a href="#lab3">Lab 3</a></li>
-        <li><a href="#lab4">Lab 4</a></li>
-        <li><a href="#downloads">Downloads</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Hero -->
+    <section id="home">
+        <div class="container">
+            <h1>Welcome to My Website</h1>
+            <p>Welcome to my website! I'm Jose Parra, an aerospace engineer with a dedication to innovation and practical problem-solving. My work spans various fields, including computational fluid dynamics, wind energy analysis, and advanced neural networks. With hands-on experience in tools like SolidWorks, ANSYS, MATLAB, and HTML, I approach complex engineering challenges with practical, effective solutions.</p>
+        </div>
+    </section>
 
-  <!-- Home Section -->
-  <section id="home">
-    <h2>Welcome</h2>
-    <p>
-      Welcome to the <strong>Soft Robotics Lab Series</strong>, a hands-on guide to designing
-      and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
-      In these labs, you’ll learn how to set up your geometry, choose appropriate materials,
-      apply loads and boundary conditions, and optimize your design parameters.
-    </p>
-  </section>
+    <!-- About -->
+    <section id="about">
+        <div class="container grid grid-cols-2">
+            <div>
+                <h2>About Me</h2>
+                <p>I'm Jose Parra, an aerospace engineer with a strong foundation in both theoretical knowledge and hands-on experience. I graduated with a degree in Aerospace Engineering, where I developed a deep expertise in computational fluid dynamics, wind energy analysis, and systems modeling. My technical skills include proficiency in SolidWorks, ANSYS, MATLAB, and HTML, allowing me to approach complex engineering challenges with practical, effective solutions.</p>
+                <p>Currently, I’m working on expanding my knowledge and applying my skills to new projects that push the boundaries of what's possible. Whether I'm analyzing aerodynamic performance, optimizing energy systems, or developing software tools, my goal is to contribute meaningfully to the field and create work that drives innovation forward.</p>
+                <p>Outside of engineering, I’m dedicated to fitness, tackling high-intensity weight training, and staying active. Thank you for visiting my website, and I look forward to connecting with those who share a passion for engineering, innovation, and collaboration!</p>
+            </div>
+            <div><img src="Headshot.png" alt="Portrait of Jose Parra"></div>
+        </div>
+    </section>
 
-  <!-- Overview Section -->
-  <section id="overview">
-    <h2>Project Overview</h2>
-    <p>
-      The primary objective is to explore various approaches to soft robotic actuators—
-      from basic pneumatic grippers to fiber-reinforced designs—using Finite Element Analysis
-      and specialized MATLAB toolboxes for soft robotics. By the end, you’ll have experience
-      with:
-    </p>
-    <ul>
-      <li>Hyperelastic material modeling and meshing strategies in ANSYS</li>
-      <li>Applying boundary conditions, loads, and pressure inputs</li>
-      <li>Assembly of multi-finger or fiber-reinforced actuators</li>
-      <li>Simulation, post-processing, and optimization for real-world designs</li>
-      <li>Using SoRoSim in MATLAB for continuum soft robotics</li>
-    </ul>
-  </section>
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="grid project-grid">
+                <!-- Project 1 -->
+                <article class="card">
+                    <h3>Computational Fluid Dynamics (CFD)</h3>
+                    <p>This project utilizes advanced Computational Fluid Dynamics (CFD) to simulate a two-dimensional mixing chamber driven by rotating disks, solving the Navier-Stokes, continuity, and mass fraction transport equations to capture complex fluid flow and scalar distribution. High-precision numerical methods—such as WENO schemes for advection, Crank-Nicolson for diffusion, and multigrid solvers for pressure correction—ensure accurate and stable results with realistic boundary conditions. By analyzing key metrics like kinetic energy and scalar mixing efficiency, the project provides critical insights for optimizing mixing processes in industrial applications like chemical reactors and environmental engineering.</p>
+                    <div class="video-wrapper">
+                        <video controls muted playsinline disablepictureinpicture controlslist="nofullscreen noremoteplayback nodownload">
+                            <source src="YMovie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <a href="CFDfinalreport.pdf" download>Download Project Report (PDF)</a>
+                </article>
 
-  <!-- Lab 1: Pneumatic Soft Robotic Gripper -->
-  <section id="lab1">
-    <h2>Lab 1: Pneumatic Soft Robotic Gripper</h2>
+                <!-- Project 2 -->
+                <article class="card">
+                    <h3>NASA Propellant Feed System</h3>
+                    <img src="Project2.png" alt="RS-25 propellant feed system schematic">
+                    <p>This project provides a comprehensive analysis of the RS-25 rocket engine's propellant feed system, focusing on the flow paths of liquid hydrogen and liquid oxygen, their combustion in the preburner, and injection into the main combustion chamber at full power. It systematically examines each component—including fluid properties, turbo pumps, flow splits, preburner dynamics, main injectors, thrust chamber, nozzle design, and thrust calculations—to understand their roles in overall engine performance. The analysis highlights how precise calculations and optimization of each element contribute to the engine's efficiency and thrust capabilities in aerospace applications.</p>
+                    <a href="Project2.pdf" download>Download Project 2 Report (PDF)</a>
+                </article>
 
-    <h3>Objective</h3>
-    <p>
-      Model a pneumatic soft robotic gripper that has four fingers, intended to pick up
-      an object with a round cross-section.
-    </p>
+                <!-- Project 3 -->
+                <article class="card">
+                    <h3>VAD Lidar</h3>
+                    <img src="Project3.png" alt="VAD Lidar visualization">
+                    <p>This project analyzes wind data from a specific site using Vector Azimuth Display (VAD) to extract wind speed and direction profiles over time and height, aiming to optimize wind energy generation. The analysis reveals significant wind patterns, including frequent nocturnal low-level jets, diurnal variations, and notable vertical and directional wind shear, which have important implications for wind turbine design and operation. Understanding these wind characteristics is crucial for optimizing turbine performance, increasing energy output, and ensuring the longevity of turbine components.</p>
+                    <a href="Project3.pdf" download>Download Project 3 Report (PDF)</a>
+                </article>
 
-    <h3>Expected Outcome</h3>
-    <p>
-      By completing this lab, you’ll learn core FEA tools and techniques to simulate a simple
-      pneumatic actuator in ANSYS Mechanical. You’ll gain hands-on experience setting up
-      geometry, meshing, material selection, and boundary conditions.
-    </p>
+                <!-- Project 4 -->
+                <article class="card">
+                    <h3>Machine Training Model Images for Cat and Dogs</h3>
+                    <img src="Project4.png" alt="Cat vs Dog CNN visualization">
+                    <p>It's important to distinguish between species; we all know what a cat and dog looks like, but a machine doesn’t. The one advantage of using a computer is its processing speed. In this project, I program in Python an application that is able to tell the difference between a cat and dog using convolutional and pooling layers. The model will be trained by feeding it 25,000 pictures of cats and dogs.</p>
+                    <a href="Project4.pdf" download>Download Project 4 Report (PDF)</a>
+                </article>
+            </div>
+        </div>
+    </section>
 
-    <h3>Section 1: Geometry, Meshing, Material Selection</h3>
-    <p>
-      Start by creating the basic 3D geometry for each finger and the internal air channel
-      for pressurization. Perform a suitable mesh (e.g., tetrahedral or hexahedral) and choose
-      a hyperelastic material from the ANSYS database (e.g., Yeoh or Mooney-Rivlin).
-    </p>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container grid grid-cols-2">
+            <div>
+                <h2>Contact</h2>
+                <p>If you’d like to get in touch, feel free to send me an email at <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.</p>
+            </div>
+            <div>
+                <form action="https://formspree.io/f/myzyeode" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
 
-    <h3>Section 2: BC, Loads, and Contact Conditions</h3>
-    <p>
-      Define frictional or bonded contacts where necessary (e.g., between finger segments).
-      Apply a ramped pressure load (e.g., up to 30 kPa) over a certain time step to simulate
-      inflation. Constrain the base or mounting points appropriately.
-    </p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
-    <!-- Example images or figures -->
-    <figure>
-      <img src="lab11.png" alt="Lab 1 Geometry Example" width="500">
-      <figcaption>Geometry (XY view) showing internal walls where pressure is applied.</figcaption>
-    </figure>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
 
-    <figure>
-      <img src="lab1.png" alt="Lab 1 Simulation Results" width="500">
-      <figcaption>Pressure vs Time chart from a 2-second simulation ramp.</figcaption>
-    </figure>
-  </section>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <!-- Lab 2: ANSYS Setup – Detailed Geometry & Meshing -->
-  <section id="lab2">
-    <h2>Lab 2: Detailed Geometry & Meshing</h2>
-    <p>
-      <strong>Goal:</strong> Dive deeper into how to refine your geometry and mesh in ANSYS
-      to capture large deformations accurately.
-    </p>
-    <ol>
-      <li><strong>Geometry Creation:</strong> Either create from scratch or import your 3D model
-        of the soft actuator. Incorporate any internal channels, sensor cutouts, or strain-limit
-        layers in the design.</li>
-      <li><strong>Meshing Strategy:</strong> Select element types suitable for hyperelastic
-        materials. Pay attention to mesh density in regions with high curvature or stress
-        gradients.</li>
-      <li><strong>Quality Checks:</strong> Evaluate element quality metrics (aspect ratio,
-        skewness, etc.). A well-refined mesh helps ensure stable and accurate results.</li>
-    </ol>
-  </section>
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Jose Parra. All rights reserved.
+    </footer>
 
-  <!-- Lab 3: Fiber-Reinforced Actuators -->
-  <section id="lab3">
-    <h2>Lab 3: Fiber-Reinforced Actuators</h2>
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Back to Top">▲</button>
 
-    <h3>Actuator Body (Eco Flex, Neo-Hookean)</h3>
-    <ul>
-      <li>Shear Modulus <em>μ̄</em> = 0.314 MPa</li>
-    </ul>
-
-    <h3>Strain-Limiting Layer (Fiberglass, Linear Elastic)</h3>
-    <ul>
-      <li>Young’s Modulus ≈ 7.9 MPa (combined)</li>
-    </ul>
-
-    <h3>Fiber Reinforcement (Kevlar, Linear Elastic)</h3>
-    <ul>
-      <li>Young’s Modulus <em>E</em> = 31,076 MPa</li>
-      <li>
-        <strong>Torque for Hemi-circular Section:</strong><br>
-        M<sub>ₐ</sub> = 0.34 × a³ × P<sub>ₐ</sub>  
-        Given a = 8 mm, P<sub>ₐ</sub> = 60 kPa → M<sub>ₐ</sub> ≈ 10.46 N·mm
-      </li>
-      <li>
-        <strong>Force Output at Tip:</strong><br>
-        F = [(4a³ + 3πa²b)/6L] × P<sub>ₐ</sub>  
-        For a = 8 mm, b = 2 mm, L = 10 mm → F ≈ 8.5 N
-      </li>
-      <li>
-        <strong>Pressure for 360° Bending:</strong><br>
-        ~200 kPa for a = 8 mm, t = 2 mm, L = 160 mm
-      </li>
-    </ul>
-
-    <h4>Mesh Size Reference</h4>
-    <ul>
-      <li>Nodes: ~160,700</li>
-      <li>Elements: ~101,000</li>
-    </ul>
-
-    <h4>Design Trade-offs</h4>
-    <ul>
-      <li>More wall thickness → Less bending</li>
-      <li>Higher fiber stiffness → Greater control, less flexibility</li>
-    </ul>
-
-    <h3>Section 3: Assembly</h3>
-    <p>
-      Combine your actuator body, strain-limiting layer, and fiber reinforcement into
-      a single assembly in ANSYS. Define appropriate contact interactions and verify
-      that all parts share consistent mesh interfaces.
-    </p>
-
-    <h3>Section 4: Optimizing & Simulating Output Values</h3>
-    <p>
-      Run multiple simulations with varying parameters—fiber angles, thicknesses,
-      pressure loads—to see how each factor influences bending angle, stress, and
-      force output. Summarize your findings to guide design improvements.
-    </p>
-
-    <p><em>Modeling Tool:</em> ANSYS Mechanical</p>
-  </section>
-
-  <!-- Lab 4: SoRoSim (MATLAB) -->
-  <section id="lab4">
-    <h2>Lab 4: SoRoSim (MATLAB)</h2>
-    <p>
-      <strong>SoRoSim</strong> is a MATLAB toolbox for simulating soft, rigid, and hybrid robots
-      using the Geometric Variable Strain (GVS) method. It models soft links as Cosserat rods,
-      capturing bend, twist, stretch, and shear. The GUI lets users build structures, assign
-      degrees of freedom, and apply loads or actuations.
-    </p>
-    <p>
-      The new version, <strong>Differential_SoRoSim</strong>, adds analytical derivatives for
-      faster, more efficient analysis. This is especially useful when dealing with the
-      nonlinear systems typical of soft robotics.
-    </p>
-
-    <h3>Solver Improvements</h3>
-    <ul>
-      <li><em>Statics.m</em> could fail to converge with the default solver (<em>fsolve</em>) if
-          the system stiffness is very high.</li>
-      <li>By switching to a Newton-Raphson approach (with a numerical Jacobian), the solver can
-          handle complex geometries and large deflections more robustly.</li>
-      <li>This iterative method updates the residual, approximates the Jacobian, and applies a
-          damped Newton step—ideal for soft robotics’ nonlinearities.</li>
-    </ul>
-
-    <!-- Example figure -->
-    <figure>
-      <img src="lab4.png" alt="SoRoSim Visualization" width="450">
-      <figcaption>An example of multi-link simulation in SoRoSim.</figcaption>
-    </figure>
-
-    <p>
-      <em>Tip:</em> If you’re new to MATLAB, start by exploring the sample scripts in SoRoSim’s
-      documentation. Try adjusting material stiffness or segment length, then rerun the
-      simulations to see how it affects bending or force output.
-    </p>
-    <!--             ----->
-    <!-- Interactive Quiz Section for Lab 4 -->
-    <section id="interactiveQuiz" style="margin-top: 2rem;">
-    <h3>What is the value of the [1,2] cell in qqd in two sig figs with a force input of 10 N.</h3>
-    <p><strong>Question:</strong> In a few words, what is the primary purpose of SoRoSim?</p>
-
-    <input type="text" id="quizAnswer" placeholder="Type your answer here" />
-    <button onclick="checkSoRoSimAnswer()">Check Answer</button>
-    <button onclick="showSoRoSimHint()">Need Help?</button>
-
-    <p id="quizFeedback" style="margin-top: 10px; font-weight: bold;"></p>
-    <p id="quizHint" style="display: none;">
-      <em>Hint:</em> Think about how SoRoSim uses the GVS method for soft and hybrid robots.
-      It helps you <strong>simulate</strong> and <strong>analyze</strong> robots that can bend,
-      twist, and stretch.
-  </p>
-</section>
-
-    <!--                 -->
-  </section>
-      <!-- PDF Download Section -->
-  <section id="download">
-                <h2>Download Project Report</h2>
-                <p>Click the link below to download the PDF report associated with this project.</p>
-                <a href="SoftRobotics.pdf" download>Download Project Report (PDF)</a>
-  </section>
-
-  <!-- Downloads Section -->
-  <section id="downloads">
-    <h2>Downloads</h2>
-    <p>
-      Below are links to the resources you’ll need for the labs:
-    </p>
-    <ul>
-      <li><a href="SoftRoboticsLab_Models.zip" download>Soft Robotics CAD Models (ZIP)</a></li>
-      <li><a href="SoRoSimScripts.zip" download>SoRoSim MATLAB Scripts (ZIP)</a></li>
-      <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project Files (ZIP)</a></li>
-      <li><a href="MaterialData.xlsx" download>Hyperelastic Material Data (XLSX)</a></li>
-    </ul>
-    <p>
-      Each ZIP file includes a “README” that explains how to set up your working directory.
-    </p>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      If you have any questions or feedback, feel free to email me at
-      <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.
-    </p>
-  </section>
-
-  <!-- Contact Form with Formspree -->
-  <section id="contact-form">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/myzyeode" method="POST">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Jose Parra. All rights reserved.</p>
-  </footer>
-
-  <!-- Back to the top button -->
-  <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
-
-  <!-- JavaScript -->
-<script>
-  // Example "Back to Top" function
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // NEW numeric check for -9.8
-  function checkSoRoSimAnswer() {
-    // Grab what the user typed and convert to a number
-    const userAnswer = parseFloat(document.getElementById('quizAnswer').value.trim());
-    const feedback = document.getElementById('quizFeedback');
-
-    // Check if it's close to -9.8 (within ±0.01)
-    if (!isNaN(userAnswer) && Math.abs(userAnswer - (-9.8)) <= 0.01) {
-      feedback.style.color = 'green';
-      feedback.textContent = 'Correct! The [1,2] cell in qqd is about -9.8 in two sig figs.';
-       
-    } else {
-      feedback.style.color = 'red';
-      feedback.textContent = 'Not quite right. Try again or click "Need Help?" for a hint.';
-       
-    }
-  }
-
-  // Keep your hint function
-  function showSoRoSimHint() {
-    document.getElementById('quizHint').style.display = 'block';
-  }
-</script>
-
-
-
-    
-    
-
-
+    <!-- JS for Back-to-top -->
+    <script>
+        const topBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => { topBtn.style.display = window.scrollY > 400 ? "block" : "none"; });
+        topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    </script>
 </body>
 </html>
