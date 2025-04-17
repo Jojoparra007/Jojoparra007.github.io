@@ -17,116 +17,55 @@
             --trans: 0.25s ease;
             font-size: 16px;
         }
-        *,*::before,*::after { box-sizing: border-box; }
-        body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: var(--clr-bg); color: var(--clr-text); line-height: 1.6; }
-        a { color: var(--clr-accent); text-decoration: none; }
-        img { max-width: 100%; display: block; border-radius: var(--radius); }
-        h1,h2,h3 { line-height: 1.2; margin: 0 0 .5em; }
-        section { padding: 4rem 1rem; }
+        *,*::before,*::after{box-sizing:border-box}
+        body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
+        a{color:var(--clr-accent);text-decoration:none}
+        img{max-width:100%;display:block;border-radius:var(--radius)}
+        h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+        section{padding:4rem 1rem}
 
         /* ── Header & Navigation ── */
-        header { position: sticky; top: 0; z-index: 1000; background: rgba(14,14,17,.8); backdrop-filter: blur(10px); }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
-        nav ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
-        nav li { position: relative; }
-        nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--clr-accent); transition: width var(--trans); }
-        nav a:hover::after { width: 100%; }
+        header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
+        .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
+        nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+        nav li{position:relative}
+        nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
+        nav a:hover::after{width:100%}
 
         /* ── Hero ── */
-        #home { text-align: center; background: linear-gradient(135deg,#1b1b1f 0%,#141418 100%); }
-        #home h1 { font-size: clamp(2.5rem,6vw,4rem); color: var(--clr-accent); }
-        #home p { max-width: 720px; margin-inline: auto; color: var(--clr-muted); }
+        #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
+        #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
+        #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
 
         /* ── Layout helpers ── */
-        .container { max-width: 1100px; margin: 0 auto; }
-        .grid { display: grid; gap: 2rem; }
-        @media(min-width:768px){
-            .grid-cols-2 { grid-template-columns: repeat(2,1fr); }
-            .project-grid { grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); }
-        }
+        .container{max-width:1100px;margin:0 auto}
+        .grid{display:grid;gap:2rem}
+        @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
 
         /* ── Cards ── */
-        .card {
-            background: var(--clr-surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(0,0,0,.35);
-            transition: transform var(--trans), box-shadow var(--trans);
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,.45);
-        }
+        .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
+        .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
 
         /* Video wrapper keeps size */
-        .video-wrapper {
-            width: 100%;
-            aspect-ratio: 16/9;
-            max-height: 240px;
-            overflow: hidden;
-            border-radius: var(--radius);
-        }
-        .video-wrapper video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
+        .video-wrapper video{width:100%;height:100%;object-fit:cover}
 
         /* Constrain project images */
-        .card img {
-            width: 100%;
-            height: auto;
-            max-height: 240px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-        }
+        .card img{width:100%;height:auto;max-height:240px;object-fit:cover;border-radius:var(--radius);margin-bottom:1rem}
 
         /* ── Contact form ── */
-        form { display: grid; gap: 1rem; max-width: 600px; }
-        input, textarea, button {
-            padding: .75rem 1rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--clr-surface);
-            background: var(--clr-surface);
-            color: var(--clr-text);
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus { outline: 2px solid var(--clr-accent); }
-        button {
-            cursor: pointer;
-            border: none;
-            background: var(--clr-accent);
-            color: #000;
-            transition: background var(--trans);
-        }
-        button:hover { background: #53c5ff; }
+        form{display:grid;gap:1rem;max-width:600px}
+        input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
+        input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
+        button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
+        button:hover{background:#53c5ff}
 
         /* ── Footer ── */
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: #1b1b1f;
-            color: var(--clr-muted);
-            font-size: .875rem;
-        }
+        footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
 
-        /* ── Back-to-top ── */
-        #backToTop {
-            position: fixed;
-            right: 1.25rem;
-            bottom: 1.25rem;
-            padding: .75rem 1rem;
-            border: none;
-            border-radius: var(--radius);
-            background: var(--clr-accent);
-            color: #000;
-            font-weight: 600;
-            cursor: pointer;
-            display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,.35);
-        }
-        #backToTop:hover { background: #53c5ff; }
+        /* ── Back‑to‑top ── */
+        #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+        #backToTop:hover{background:#53c5ff}
     </style>
 </head>
 <body>
@@ -148,8 +87,8 @@
     <!-- Hero -->
     <section id="home">
         <div class="container">
-            <h1>Aerospace Engineer • CFD Specialist • Maker</h1>
-            <p>Welcome! I’m <strong>Jose Parra</strong>, an aerospace engineer dedicated to innovation and practical problem-solving. Dive into my projects below!</p>
+            <h1>Welcome to My Website</h1>
+            <p>Welcome to my website! I'm Jose Parra, an aerospace engineer with a dedication to innovation and practical problem-solving. My work spans various fields, including computational fluid dynamics, wind energy analysis, and advanced neural networks. With hands-on experience in tools like SolidWorks, ANSYS, MATLAB, and HTML, I approach complex engineering challenges with practical, effective solutions.</p>
         </div>
     </section>
 
@@ -158,8 +97,9 @@
         <div class="container grid grid-cols-2">
             <div>
                 <h2>About Me</h2>
-                <p>I pair rigorous theory with hands-on practice—leveraging <strong>ANSYS, OpenFOAM, MATLAB, and SolidWorks</strong> to solve aerospace challenges. When I’m not coding or simulating, I’m out hiking or exploring new tech.</p>
-                <p>Let’s collaborate on CFD, wind-energy analytics, or soft-robotics. I bring curiosity, grit, and clear communication.</p>
+                <p>I'm Jose Parra, an aerospace engineer with a strong foundation in both theoretical knowledge and hands-on experience. I graduated with a degree in Aerospace Engineering, where I developed a deep expertise in computational fluid dynamics, wind energy analysis, and systems modeling. My technical skills include proficiency in SolidWorks, ANSYS, MATLAB, and HTML, allowing me to approach complex engineering challenges with practical, effective solutions.</p>
+                <p>Currently, I’m working on expanding my knowledge and applying my skills to new projects that push the boundaries of what's possible. Whether I'm analyzing aerodynamic performance, optimizing energy systems, or developing software tools, my goal is to contribute meaningfully to the field and create work that drives innovation forward.</p>
+                <p>Outside of engineering, I’m dedicated to fitness, tackling high-intensity weight training, and staying active. Thank you for visiting my website, and I look forward to connecting with those who share a passion for engineering, innovation, and collaboration!</p>
             </div>
             <div><img src="Headshot.png" alt="Portrait of Jose Parra"></div>
         </div>
@@ -168,40 +108,43 @@
     <!-- Projects -->
     <section id="projects">
         <div class="container">
-            <h2>Featured Projects</h2>
+            <h2>My Projects</h2>
             <div class="grid project-grid">
                 <!-- Project 1 -->
                 <article class="card">
-                    <h3>2-D Mixing Chamber CFD</h3>
-                    <p>Advanced CFD simulating a mixing chamber driven by rotating disks, using WENO advection, Crank–Nicolson diffusion, and multigrid solvers. Key insights on kinetic energy and scalar mixing efficiency.</p>
+                    <h3>Computational Fluid Dynamics (CFD)</h3>
+                    <p>This project utilizes advanced Computational Fluid Dynamics (CFD) to simulate a two-dimensional mixing chamber driven by rotating disks, solving the Navier-Stokes, continuity, and mass fraction transport equations to capture complex fluid flow and scalar distribution. High-precision numerical methods—such as WENO schemes for advection, Crank-Nicolson for diffusion, and multigrid solvers for pressure correction—ensure accurate and stable results with realistic boundary conditions. By analyzing key metrics like kinetic energy and scalar mixing efficiency, the project provides critical insights for optimizing mixing processes in industrial applications like chemical reactors and environmental engineering.</p>
                     <div class="video-wrapper">
                         <video controls muted playsinline disablepictureinpicture controlslist="nofullscreen noremoteplayback nodownload">
                             <source src="YMovie.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <a href="CFDfinalreport.pdf" download>Download PDF Report</a>
+                    <a href="CFDfinalreport.pdf" download>Download Project Report (PDF)</a>
                 </article>
+
                 <!-- Project 2 -->
                 <article class="card">
-                    <h3>RS-25 Propellant Feed Analysis</h3>
-                    <img src="Project2.png" alt="RS-25 feed system schematic">
-                    <p>A component-level model of LH₂/LOX flow, turbopump dynamics, and injector design—driving thrust predictions for NASA’s RS-25 engine.</p>
-                    <a href="Project2.pdf" download>Download PDF Report</a>
+                    <h3>NASA Propellant Feed System</h3>
+                    <img src="Project2.png" alt="RS-25 propellant feed system schematic">
+                    <p>This project provides a comprehensive analysis of the RS-25 rocket engine's propellant feed system, focusing on the flow paths of liquid hydrogen and liquid oxygen, their combustion in the preburner, and injection into the main combustion chamber at full power. It systematically examines each component—including fluid properties, turbo pumps, flow splits, preburner dynamics, main injectors, thrust chamber, nozzle design, and thrust calculations—to understand their roles in overall engine performance. The analysis highlights how precise calculations and optimization of each element contribute to the engine's efficiency and thrust capabilities in aerospace applications.</p>
+                    <a href="Project2.pdf" download>Download Project 2 Report (PDF)</a>
                 </article>
+
                 <!-- Project 3 -->
                 <article class="card">
-                    <h3>VAD-Lidar Wind Profiling</h3>
-                    <img src="Project3.png" alt="Lidar wind profile visualization">
-                    <p>Wind profiling using Vector Azimuth Display to extract speed and direction profiles, revealing nocturnal jets and shear layers for turbine optimization.</p>
-                    <a href="Project3.pdf" download>Download PDF Report</a>
+                    <h3>VAD Lidar</h3>
+                    <img src="Project3.png" alt="VAD Lidar visualization">
+                    <p>This project analyzes wind data from a specific site using Vector Azimuth Display (VAD) to extract wind speed and direction profiles over time and height, aiming to optimize wind energy generation. The analysis reveals significant wind patterns, including frequent nocturnal low-level jets, diurnal variations, and notable vertical and directional wind shear, which have important implications for wind turbine design and operation. Understanding these wind characteristics is crucial for optimizing turbine performance, increasing energy output, and ensuring the longevity of turbine components.</p>
+                    <a href="Project3.pdf" download>Download Project 3 Report (PDF)</a>
                 </article>
+
                 <!-- Project 4 -->
                 <article class="card">
-                    <h3>Cat-vs-Dog CNN Classifier</h3>
-                    <img src="Project4.png" alt="Neural-network class activation map">
-                    <p>Convolutional network trained on 25,000 images, achieving 96% accuracy in species classification—foundational work for computer-vision pipelines.</p>
-                    <a href="Project4.pdf" download>Download PDF Report</a>
+                    <h3>Machine Training Model Images for Cat and Dogs</h3>
+                    <img src="Project4.png" alt="Cat vs Dog CNN visualization">
+                    <p>It's important to distinguish between species; we all know what a cat and dog looks like, but a machine doesn’t. The one advantage of using a computer is its processing speed. In this project, I program in Python an application that is able to tell the difference between a cat and dog using convolutional and pooling layers. The model will be trained by feeding it 25,000 pictures of cats and dogs.</p>
+                    <a href="Project4.pdf" download>Download Project 4 Report (PDF)</a>
                 </article>
             </div>
         </div>
@@ -211,15 +154,20 @@
     <section id="contact">
         <div class="container grid grid-cols-2">
             <div>
-                <h2>Let’s Talk</h2>
-                <p>Have a collaboration idea or need a CFD specialist on your team? Drop a message—I’ll reply within 24 hours.</p>
-                <p>Email ➜ <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
+                <h2>Contact</h2>
+                <p>If you’d like to get in touch, feel free to send me an email at <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a>.</p>
             </div>
             <div>
                 <form action="https://formspree.io/f/myzyeode" method="POST">
-                    <label>Name<input type="text" name="name" required></label>
-                    <label>Email<input type="email" name="email" required></label>
-                    <label>Message<textarea name="message" rows="4" required></textarea></label>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
                     <button type="submit">Send Message</button>
                 </form>
             </div>
@@ -227,7 +175,9 @@
     </section>
 
     <!-- Footer -->
-    <footer>© 2025 Jose Parra • Built with caffeine & curiosity</footer>
+    <footer>
+        &copy; 2024 Jose Parra. All rights reserved.
+    </footer>
 
     <!-- Back to Top -->
     <button id="backToTop" aria-label="Back to Top">▲</button>
