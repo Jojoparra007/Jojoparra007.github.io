@@ -1,140 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soft Robotics Lab Series</title>
 
   <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --clr-primary:#0057B7;   /* deep blue */
-      --clr-accent:#FFB703;    /* warm yellow */
-      --clr-bg:#f8f9fa;
-      --clr-text:#1a1a1a;
+    :root {
+      /* Light theme */
+      --clr-primary: #0057b7;
+      --clr-accent: #ffb703;
+      --clr-bg: #f8f9fa;
+      --clr-surface: #ffffff;
+      --clr-text: #1a1a1a;
     }
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      font-family:'Inter',sans-serif;
-      margin:0;
-      line-height:1.6;
-      background:var(--clr-bg);
-      color:var(--clr-text);
+
+    /* Dark theme */
+    [data-theme="dark"] {
+      --clr-primary: #6ea8ff;
+      --clr-accent: #ffd166;
+      --clr-bg: #121212;
+      --clr-surface: #1e1e1e;
+      --clr-text: #e9e9e9;
     }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      line-height: 1.6;
+      font-family: "Inter", sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
     /* ===== HEADER & NAV ===== */
-    header{
-      position:sticky;top:0;z-index:1000;
-      background:var(--clr-primary);
-      color:#fff;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:.75rem 1rem;
-      box-shadow:0 2px 6px rgba(0,0,0,.15);
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--clr-primary);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     }
-    header h1{margin:0;font-size:1.25rem;letter-spacing:.03rem;}
-    nav ul{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      gap:1rem;
+    header h1 { margin: 0; font-size: 1.25rem; letter-spacing: 0.03rem; }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
     }
-    nav a{
-      color:#fff;
-      text-decoration:none;
-      font-weight:500;
-      transition:opacity .25s ease;
+    nav a { color: #fff; text-decoration: none; font-weight: 500; transition: opacity 0.25s ease; }
+    nav a:hover { opacity: 0.75; }
+
+    /* Theme toggle button */
+    #themeToggle {
+      background: none;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
     }
-    nav a:hover{opacity:.75;}
+    #themeToggle:hover { background: rgba(255, 255, 255, 0.15); }
 
     /* ===== SECTION ===== */
-    section{
-      padding:2.5rem 1rem;
-      max-width:960px;
-      margin:auto;
-    }
-    section:nth-of-type(odd){background:#ffffff;}
+    section { padding: 2.5rem 1rem; max-width: 960px; margin: auto; }
+    section:nth-of-type(odd) { background: var(--clr-surface); }
+    h2 { margin-top: 0; font-size: 1.75rem; color: var(--clr-primary); }
+    h3 { margin-bottom: 0.5rem; color: var(--clr-accent); }
 
-    h2{margin-top:0;font-size:1.75rem;color:var(--clr-primary);}    
-    h3{margin-bottom:.5rem;color:var(--clr-accent);} 
+    figure { margin: 1.5rem 0; text-align: center; }
+    figure img { max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
+    figcaption { font-size: 0.9rem; color: #777; margin-top: 0.35rem; }
 
-    figure{margin:1.5rem 0;text-align:center;}
-    figure img{max-width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08);}  
-    figcaption{font-size:.9rem;color:#555;margin-top:.35rem;}
-
-    ul,ol{margin-top:.5rem;margin-left:1.25rem;}
+    ul, ol { margin-top: 0.5rem; margin-left: 1.25rem; }
 
     /* ===== BUTTONS & FORM ELEMENTS ===== */
-    button,
-    input[type="submit"],
-    .btn{
-      background:var(--clr-accent);
-      color:#262626;
-      border:none;
-      padding:.5rem 1.1rem;
-      border-radius:4px;
-      font-weight:600;
-      cursor:pointer;
-      transition:background .3s ease;
+    button, input[type="submit"], .btn {
+      background: var(--clr-accent);
+      color: #262626;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.3s ease;
     }
-    button:hover,
-    input[type="submit"]:hover,
-    .btn:hover{
-      background:#ffa31a;
-    }
-    input,textarea{
-      width:100%;
-      padding:.6rem .7rem;
-      margin:.3rem 0 1rem;
-      border:1px solid #ccd;
-      border-radius:4px;
-      font-family:inherit;
+    button:hover, input[type="submit"]:hover, .btn:hover { filter: brightness(0.9); }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      margin: 0.3rem 0 1rem;
+      border: 1px solid #ccd;
+      border-radius: 4px;
+      font-family: inherit;
+      background: var(--clr-surface);
+      color: var(--clr-text);
     }
 
     /* ===== BACK-TO-TOP ===== */
-    #backToTop{
-      position:fixed;
-      bottom:1.5rem;
-      right:1.5rem;
-      display:none;
-      box-shadow:0 3px 6px rgba(0,0,0,.2);
+    #backToTop {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: none;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      background: var(--clr-primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.25rem;
     }
 
-    /* ===== RESPONSIVE NAV (hamburger) ===== */
-    .hamburger{
-      display:none;
-      flex-direction:column;
-      gap:4px;
-      cursor:pointer;
-    }
-    .hamburger span{width:24px;height:3px;background:#fff;}
-    @media(max-width:768px){
-      nav ul{position:fixed;inset:0 0 auto auto;width:200px;height:100vh;background:var(--clr-primary);flex-direction:column;padding-top:4rem;transform:translateX(100%);transition:transform .3s ease;}
-      nav ul.open{transform:translateX(0);}
-      .hamburger{display:flex;}
+    /* ===== RESPONSIVE NAV ===== */
+    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 3px; background: #fff; }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        inset: 0 0 auto auto;
+        width: 200px;
+        height: 100vh;
+        background: var(--clr-primary);
+        flex-direction: column;
+        padding-top: 4rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+      nav ul.open { transform: translateX(0); }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Soft Robotics Lab Series</h1>
-    <div class="hamburger" id="hamburger" aria-label="Toggle menu" tabindex="0">
-      <span></span><span></span><span></span>
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+      <button id="themeToggle" aria-label="Toggle dark mode">☾</button>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu" tabindex="0"><span></span><span></span><span></span></div>
     </div>
     <nav>
       <ul id="nav-list">
         <li><a href="#home">Home</a></li>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#lab1">Lab 1</a></li>
-        <li><a href="#lab2">Lab 2</a></li>
-        <li><a href="#lab3">Lab 3</a></li>
-        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="#lab1">Lab 1</a></li>
+        <li><a href="#lab2">Lab 2</a></li>
+        <li><a href="#lab3">Lab 3</a></li>
+        <li><a href="#lab4">Lab 4</a></li>
         <li><a href="#downloads">Downloads</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -146,15 +179,17 @@
     <section id="home">
       <h2>Welcome</h2>
       <p>
-        Welcome to the <strong>Soft Robotics Lab Series</strong> — a hands‑on guide to designing and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
-        Through curated, bite‑sized labs you’ll master geometry setup, material choices, boundary conditions, and performance optimisation.
+        Welcome to the <strong>Soft Robotics Lab Series</strong> — a hands‑on guide to designing
+        and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
+        Through curated, bite‑sized labs you’ll master geometry setup, material choices, boundary
+        conditions, and performance optimisation.
       </p>
     </section>
 
     <!-- Overview Section -->
     <section id="overview">
       <h2>Project Overview</h2>
-      <p>The series walks you from first principles to advanced concepts such as fibre‑reinforcement and continuum modelling. By the end, you’ll have practical experience in:</p>
+      <p>The series walks you from first principles to advanced concepts. By the end, you’ll have practical experience in:</p>
       <ul>
         <li>Hyper‑elastic material modelling & meshing strategies in ANSYS</li>
         <li>Applying loads, pressures and BCs correctly</li>
@@ -166,26 +201,25 @@
 
     <!-- Lab 1 -->
     <section id="lab1">
-      <h2>Lab 1 | Pneumatic Gripper</h2>
+      <h2>Lab 1 | Pneumatic Gripper</h2>
       <h3>Objective</h3>
       <p>Model a four‑finger pneumatic gripper capable of lifting a cylindrical object.</p>
       <h3>Expected Outcome</h3>
-      <p>Gain fluency with ANSYS workbench: geometry, meshing, material assignment and boundary conditions.</p>
-
+      <p>Gain fluency with ANSYS Workbench: geometry, meshing, material assignment and boundary conditions.</p>
       <figure>
-        <img src="lab11.png" alt="Lab 1 geometry (finger channels)">
+        <img src="lab11.png" alt="Lab 1 geometry" />
         <figcaption>Geometry view showing internal pressure channels.</figcaption>
       </figure>
       <figure>
-        <img src="lab1.png" alt="Lab 1 simulation results">
+        <img src="lab1.png" alt="Lab 1 simulation results" />
         <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs. time.</figcaption>
       </figure>
     </section>
 
-    <!-- Lab 2-->
+    <!-- Lab 2 -->
     <section id="lab2">
-      <h2>Lab 2 | Geometry & Meshing Deep‑Dive</h2>
-      <p><strong>Goal:</strong> refine geometry and mesh to capture large deformations.</p>
+      <h2>Lab 2 | Geometry & Meshing Deep‑Dive</h2>
+      <p><strong>Goal:</strong> Refine geometry and mesh to capture large deformations.</p>
       <ol>
         <li><strong>Detailed geometry:</strong> include strain‑limiting layers or sensor pockets.</li>
         <li><strong>Meshing strategy:</strong> choose element types fit for hyper‑elastic materials.</li>
@@ -195,35 +229,39 @@
 
     <!-- Lab 3 -->
     <section id="lab3">
-      <h2>Lab 3 | Fibre‑Reinforced Actuators</h2>
+      <h2>Lab 3 | Fibre‑Reinforced Actuators</h2>
       <p>Compare stiffness, bending limits and output forces of reinforced vs. un‑reinforced designs.</p>
       <h3>Key Properties</h3>
       <ul>
-        <li><strong>Eco‑Flex body:</strong> μ̄ ≈ 0.314 MPa</li>
-        <li><strong>Fibreglass layer:</strong> E ≈ 7.9 MPa</li>
-        <li><strong>Kevlar fibres:</strong> E ≈ 31 GPa</li>
+        <li><strong>Eco‑Flex body:</strong> μ̄ ≈ 0.314 MPa</li>
+        <li><strong>Fibreglass layer:</strong> E ≈ 7.9 MPa</li>
+        <li><strong>Kevlar fibres:</strong> E ≈ 31 GPa</li>
+      </ul>
+      <h3>Design Trade‑offs</h3>
+      <ul>
+        <li>Thicker walls → Less bending</li>
+        <li>Higher fibre stiffness → Greater control, less flexibility</li>
       </ul>
     </section>
 
     <!-- Lab 4 -->
     <section id="lab4">
-      <h2>Lab 4 | SoRoSim (MATLAB)</h2>
+      <h2>Lab 4 | SoRoSim (MATLAB)</h2>
       <p><strong>SoRoSim</strong> models soft links as Cosserat rods using the Geometric Variable Strain method.</p>
-
       <figure>
-        <img src="lab4.png" alt="SoRoSim multi‑link visualisation">
+        <img src="lab4.png" alt="SoRoSim visualisation" />
         <figcaption>Multi‑segment soft robot in <em>SoRoSim</em>.</figcaption>
       </figure>
 
       <!-- Interactive Quiz -->
       <div id="interactiveQuiz" style="margin-top:2rem;">
-        <h3>Quick Quiz</h3>
+        <h3>Quick Quiz</h3>
         <p>What is the primary purpose of SoRoSim?</p>
-        <input type="text" id="quizAnswer" placeholder="Your answer…">
+        <input type="text" id="quizAnswer" placeholder="Your answer…" />
         <button id="checkBtn">Check</button>
-        <button id="hintBtn" class="btn btn-light">Hint</button>
+        <button id="hintBtn" class="btn">Hint</button>
         <p id="quizFeedback" style="font-weight:600;margin-top:.5rem;"></p>
-        <p id="quizHint" style="display:none;color:#555;">Hint: It lets you <em>simulate and analyse</em> soft‑robotic systems that bend, twist &amp; stretch.</p>
+        <p id="quizHint" style="display:none;color:#555;">Hint: It lets you <em>simulate and analyse</em> soft‑robotic systems that bend, twist & stretch.</p>
       </div>
     </section>
 
@@ -232,11 +270,11 @@
       <h2>Downloads</h2>
       <p>All resources include a README for quick setup.</p>
       <ul>
-        <li><a href="SoftRoboticsLab_Models.zip" download>CAD Models (ZIP)</a></li>
-        <li><a href="SoRoSimScripts.zip" download>MATLAB Scripts (ZIP)</a></li>
-        <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project (ZIP)</a></li>
-        <li><a href="MaterialData.xlsx" download>Material Data (XLSX)</a></li>
-        <li><a href="SoftRobotics.pdf" download>Project Report (PDF)</a></li>
+        <li><a href="SoftRoboticsLab_Models.zip" download>CAD Models (ZIP)</a></li>
+        <li><a href="SoRoSimScripts.zip" download>MATLAB Scripts (ZIP)</a></li>
+        <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project (ZIP)</a></li>
+        <li><a href="MaterialData.xlsx" download>Material Data (XLSX)</a></li>
+        <li><a href="SoftRobotics.pdf" download>Project Report (PDF)</a></li>
       </ul>
     </section>
 
@@ -247,12 +285,12 @@
 
       <form action="https://formspree.io/f/myzyeode" method="POST" style="margin-top:1rem;max-width:480px;">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" required />
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" required />
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
-        <input type="submit" value="Send">
+        <input type="submit" value="Send" />
       </form>
     </section>
   </main>
@@ -261,7 +299,7 @@
   <button id="backToTop" aria-label="Back to top">▲</button>
 
   <!-- Footer -->
-  <footer style="text-align:center;padding:1rem 0;font-size:.9rem;background:#fafafa;color:#666;">
+  <footer style="text-align:center;padding:1rem 0;font-size:.9rem;background:var(--clr-surface);color:#888;">
     © 2025 Jose Parra. All rights reserved.
   </footer>
 
@@ -269,27 +307,47 @@
   <script>
     // Mobile nav toggle
     const hamburger = document.getElementById('hamburger');
-    const navList   = document.getElementById('nav-list');
-    hamburger.addEventListener('click',()=>navList.classList.toggle('open'));
-    hamburger.addEventListener('keypress',(e)=>{ if(e.key==='Enter') navList.classList.toggle('open'); });
+    const navList = document.getElementById('nav-list');
+    hamburger.addEventListener('click', () => navList.classList.toggle('open'));
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') navList.classList.toggle('open');
+    });
 
     // Back‑to‑top button
     const topBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll',()=>{
-      (window.scrollY>400)? topBtn.style.display='block' : topBtn.style.display='none';
+    window.addEventListener('scroll', () => {
+      window.scrollY > 400 ? (topBtn.style.display = 'block') : (topBtn.style.display = 'none');
     });
-    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    function setTheme(mode) {
+      root.setAttribute('data-theme', mode);
+      localStorage.setItem('theme', mode);
+      themeToggle.textContent = mode === 'dark' ? '☀' : '☾';
+    }
+    const storedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
 
     // Quiz logic
     const checkBtn = document.getElementById('checkBtn');
-    const hintBtn  = document.getElementById('hintBtn');
-    checkBtn.addEventListener('click',()=>{
+    const hintBtn = document.getElementById('hintBtn');
+    checkBtn.addEventListener('click', () => {
       const ans = document.getElementById('quizAnswer').value.toLowerCase();
       const feedback = document.getElementById('quizFeedback');
-      feedback.style.color = (ans.includes('simulate'))? 'green':'red';
-      feedback.textContent = (ans.includes('simulate'))? 'Nice! You got it.' : 'Not quite — try again or press hint.';
+      feedback.style.color = ans.includes('simulate') ? 'green' : 'red';
+      feedback.textContent = ans.includes('simulate') ? 'Nice! You got it.' : 'Not quite — try again or press hint.';
     });
-    hintBtn.addEventListener('click',()=>document.getElementById('quizHint').style.display='block');
+    hintBtn.addEventListener('click', () => {
+      document.getElementById('quizHint').style.display = 'block';
+    });
   </script>
 </body>
 </html>
