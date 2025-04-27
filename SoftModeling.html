@@ -5,183 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soft Robotics Lab Series</title>
 
-  <!-- Google Font -->
+  <!-- Google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      /* Light theme */
-      --clr-primary: #0057b7;
-      --clr-accent: #ffb703;
-      --clr-bg: #f8f9fa;
-      --clr-surface: #ffffff;
-      --clr-text: #1a1a1a;
+    :root{
+      --clr-primary:#0057b7;
+      --clr-accent:#ffb703;
+      --clr-bg:#f8f9fa;
+      --clr-surface:#ffffff;
+      --clr-text:#1a1a1a;
     }
-
-    /* Dark theme */
-    [data-theme="dark"] {
-      --clr-primary: #6ea8ff;
-      --clr-accent: #ffd166;
-      --clr-bg: #121212;
-      --clr-surface: #1e1e1e;
-      --clr-text: #e9e9e9;
+    [data-theme="dark"]{
+      --clr-primary:#6ea8ff;
+      --clr-accent:#ffd166;
+      --clr-bg:#121212;
+      --clr-surface:#1e1e1e;
+      --clr-text:#e9e9e9;
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      line-height: 1.6;
-      font-family: "Inter", sans-serif;
-      background: var(--clr-bg);
-      color: var(--clr-text);
-      transition: background 0.3s ease, color 0.3s ease;
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter",sans-serif;
+      line-height:1.6;
+      background:var(--clr-bg);
+      color:var(--clr-text);
+      transition:.3s background,.3s color;
     }
-
-    /* ===== HEADER & NAV ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--clr-primary);
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:var(--clr-primary);color:#fff;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.75rem 1rem;
+      box-shadow:0 2px 6px rgba(0,0,0,.25);
     }
-    header h1 { margin: 0; font-size: 1.25rem; letter-spacing: 0.03rem; }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 1rem;
+    header h1{margin:0;font-size:1.25rem;letter-spacing:.03rem}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+    nav a{color:#fff;text-decoration:none;font-weight:500;transition:opacity .25s}
+    nav a:hover{opacity:.75}
+    #themeToggle{
+      background:none;border:2px solid #fff;border-radius:50%;
+      width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:1rem;cursor:pointer;
     }
-    nav a { color: #fff; text-decoration: none; font-weight: 500; transition: opacity 0.25s ease; }
-    nav a:hover { opacity: 0.75; }
-
-    /* Theme toggle button */
-    #themeToggle {
-      background: none;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      cursor: pointer;
-      font-size: 1rem;
-      line-height: 1;
+    #themeToggle:hover{background:rgba(255,255,255,.15)}
+    /* Sections */
+    section{padding:2.5rem 1rem;max-width:960px;margin:auto}
+    section:nth-of-type(odd){background:var(--clr-surface)}
+    h2{margin-top:0;font-size:1.75rem;color:var(--clr-primary)}
+    h3{margin-bottom:.5rem;color:var(--clr-accent)}
+    /* Figures */
+    figure{margin:1.5rem 0;text-align:center}
+    figure img{max-width:100%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+    figcaption{font-size:.9rem;color:#777;margin-top:.35rem}
+    /* YouTube wrapper */
+    .yt-wrapper{
+      position:relative;width:100%;padding-bottom:56.25%;   /* 16:9 */
+      margin:1.5rem 0;border-radius:8px;overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,.25);
     }
-    #themeToggle:hover { background: rgba(255, 255, 255, 0.15); }
-
-    /* ===== SECTION ===== */
-    section { padding: 2.5rem 1rem; max-width: 960px; margin: auto; }
-    section:nth-of-type(odd) { background: var(--clr-surface); }
-    h2 { margin-top: 0; font-size: 1.75rem; color: var(--clr-primary); }
-    h3 { margin-bottom: 0.5rem; color: var(--clr-accent); }
-
-    figure { margin: 1.5rem 0; text-align: center; }
-    figure img { max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
-    figcaption { font-size: 0.9rem; color: #777; margin-top: 0.35rem; }
-
-    /* Video wrapper styling */
-    figure.video-wrapper,
-    figure.video-wrapper video {
-      width: 100%;
-      height: auto;
-      display: block;
+    .yt-wrapper iframe{
+      position:absolute;inset:0;width:100%;height:100%;border:0;
     }
-    figure.video-wrapper {
-      margin: 1.5rem 0;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    /* Lists / inputs */
+    ul,ol{margin:.5rem 0 0 1.25rem}
+    button,.btn,input[type="submit"]{
+      background:var(--clr-accent);color:#262626;border:none;
+      padding:.5rem 1.1rem;border-radius:4px;font-weight:600;cursor:pointer;
+      transition:filter .3s;
     }
-
-    ul, ol { margin-top: 0.5rem; margin-left: 1.25rem; }
-
-    /* ===== BUTTONS & FORM ELEMENTS ===== */
-    button, input[type="submit"], .btn {
-      background: var(--clr-accent);
-      color: #262626;
-      border: none;
-      padding: 0.5rem 1.1rem;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: filter 0.3s ease;
+    button:hover,.btn:hover,input[type="submit"]:hover{filter:brightness(.9)}
+    input,textarea{
+      width:100%;padding:.6rem .7rem;margin:.3rem 0 1rem;
+      border:1px solid #ccd;border-radius:4px;font-family:inherit;
+      background:var(--clr-surface);color:var(--clr-text);
     }
-    button:hover, input[type="submit"]:hover, .btn:hover { filter: brightness(0.9); }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.6rem 0.7rem;
-      margin: 0.3rem 0 1rem;
-      border: 1px solid #ccd;
-      border-radius: 4px;
-      font-family: inherit;
-      background: var(--clr-surface);
-      color: var(--clr-text);
+    /* Back-to-top */
+    #backToTop{
+      position:fixed;bottom:1.5rem;right:1.5rem;display:none;
+      width:40px;height:40px;border:none;border-radius:50%;
+      background:var(--clr-primary);color:#fff;font-size:1.25rem;
+      box-shadow:0 3px 6px rgba(0,0,0,.3);
     }
-
-    /* ===== BACK-TO-TOP ===== */
-    #backToTop {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      display: none;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-      background: var(--clr-primary);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.25rem;
-    }
-
-    /* ===== RESPONSIVE NAV ===== */
-    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; }
-    .hamburger span { width: 24px; height: 3px; background: #fff; }
-    @media (max-width: 768px) {
-      nav ul {
-        position: fixed;
-        inset: 0 0 auto auto;
-        width: 200px;
-        height: 100vh;
-        background: var(--clr-primary);
-        flex-direction: column;
-        padding-top: 4rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+    /* Mobile nav */
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer}
+    .hamburger span{width:24px;height:3px;background:#fff}
+    @media(max-width:768px){
+      nav ul{
+        position:fixed;inset:0 0 auto auto;width:200px;height:100vh;
+        background:var(--clr-primary);flex-direction:column;padding-top:4rem;
+        transform:translateX(100%);transition:transform .3s;
       }
-      nav ul.open { transform: translateX(0); }
-      .hamburger { display: flex; }
+      nav ul.open{transform:translateX(0)}
+      .hamburger{display:flex}
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>Soft Robotics Lab Series</h1>
-    <div style="display: flex; gap: 0.75rem; align-items: center;">
+    <div style="display:flex;gap:.75rem;align-items:center">
       <button id="themeToggle" aria-label="Toggle dark mode">☾</button>
-      <div class="hamburger" id="hamburger" aria-label="Toggle menu" tabindex="0"><span></span><span></span><span></span></div>
+      <div class="hamburger" id="hamburger" tabindex="0" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
     </div>
     <nav>
       <ul id="nav-list">
         <li><a href="#home">Home</a></li>
         <li><a href="#overview">Overview</a></li>
-        <li><a href="#lab1">Lab 1</a></li>
-        <li><a href="#lab2">Lab 2</a></li>
-        <li><a href="#lab3">Lab 3</a></li>
-        <li><a href="#lab4">Lab 4</a></li>
+        <li><a href="#lab1">Lab&nbsp;1</a></li>
+        <li><a href="#lab2">Lab&nbsp;2</a></li>
+        <li><a href="#lab3">Lab&nbsp;3</a></li>
+        <li><a href="#lab4">Lab&nbsp;4</a></li>
         <li><a href="#downloads">Downloads</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -189,107 +130,123 @@
   </header>
 
   <main>
-    <!-- Home Section -->
+    <!-- Home -->
     <section id="home">
       <h2>Welcome</h2>
       <p>
-        Welcome to the <strong>Soft Robotics Lab Series</strong> — a hands‑on guide to designing
-        and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and <em>MATLAB (SoRoSim)</em>.
-        Through curated, bite‑sized labs you’ll master geometry setup, material choices, boundary
-        conditions, and performance optimisation.
+        Welcome to the <strong>Soft Robotics Lab Series</strong> — a hands-on guide to designing
+        and simulating soft robotic actuators using <em>ANSYS Mechanical</em> and
+        <em>MATLAB (SoRoSim)</em>.
       </p>
     </section>
 
-    <!-- Overview Section -->
+    <!-- Overview -->
     <section id="overview">
       <h2>Project Overview</h2>
-      <p>The series walks you from first principles to advanced concepts. By the end, you’ll have practical experience in:</p>
+      <p>By the end of this series you will know how to:</p>
       <ul>
-        <li>Hyper‑elastic material modelling & meshing strategies in ANSYS</li>
-        <li>Applying loads, pressures and BCs correctly</li>
-        <li>Building multi‑finger or fibre‑reinforced assemblies</li>
-        <li>Post‑processing & design optimisation</li>
-        <li>Leveraging <strong>SoRoSim</strong> for continuum soft‑robotic simulation</li>
+        <li>Build hyper-elastic material models and robust FE meshes.</li>
+        <li>Apply loads, pressures and realistic boundary conditions.</li>
+        <li>Create multi-finger and fibre-reinforced actuators.</li>
+        <li>Post-process performance metrics for optimisation.</li>
+        <li>Leverage <strong>SoRoSim</strong> for continuum soft-robot simulations.</li>
       </ul>
     </section>
 
     <!-- Lab 1 -->
     <section id="lab1">
-      <h2>Lab 1 | Pneumatic Gripper</h2>
+      <h2>Lab&nbsp;1 | Pneumatic Gripper</h2>
       <h3>Objective</h3>
-      <p>Model a four‑finger pneumatic gripper capable of lifting a cylindrical object.</p>
+      <p>Model a four-finger pneumatic gripper capable of lifting a cylindrical object.</p>
       <h3>Expected Outcome</h3>
-      <p>Gain fluency with ANSYS Workbench: geometry, meshing, material assignment and boundary conditions.</p>
+      <p>Fluency with ANSYS Workbench geometry, meshing, material assignment and BCs.</p>
+
       <figure>
-        <img src="lab_1.png" alt="Lab 1 geometry" />
+        <img src="lab_1.png" alt="Lab 1 geometry">
         <figcaption>Geometry view showing internal pressure channels.</figcaption>
       </figure>
       <figure>
-        <img src="lab_11.png" alt="Lab 1 simulation results" />
-        <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs. time.</figcaption>
+        <img src="lab_11.png" alt="Lab 1 results">
+        <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs.&nbsp;time.</figcaption>
       </figure>
 
-      <!-- ===== Demonstration Videos ===== -->
-      <figure class="video-wrapper">
-        <video controls loading="lazy" poster="lab_1.png">
-          <source src="lab1_vid1.webm" type="video/webm">
-          <source src="lab1_vid1.mp4" type="video/mp4">
-          Your browser does not support HTML5 video. <a href="lab1_vid1.mp4">Download the clip</a>.
-        </video>
-        <figcaption>Inflation sequence (0–30 kPa) – real‑time view.</figcaption>
+      <!-- YouTube embeds -->
+      <figure class="yt-wrapper">
+        <iframe src="https://www.youtube.com/embed/hq7gAyux_NQ?rel=0"
+                title="Inflation sequence" allowfullscreen></iframe>
       </figure>
+      <figcaption style="text-align:center">
+        Inflation sequence (0–30 kPa) – real-time view.
+      </figcaption>
 
-      <figure class="video-wrapper">
-        <video controls loading="lazy" poster="lab_1.png">
-          <source src="lab1_vid2.webm" type="video/webm">
-          <source src="lab1_vid2.mp4" type="video/mp4">
-        </video>
-        <figcaption>Gripping test – lifting a 250 g aluminium can.</figcaption>
+      <figure class="yt-wrapper">
+        <iframe src="https://www.youtube.com/embed/zRsUFG5CIBk?rel=0"
+                title="Gripping test" allowfullscreen></iframe>
       </figure>
+      <figcaption style="text-align:center">
+        Gripping test – lifting a 250 g aluminium can.
+      </figcaption>
 
-      <figure class="video-wrapper">
-        <video controls loading="lazy" poster="lab_11.png">
-          <source src="lab1_vid3.webm" type="video/webm">
-          <source src="lab1_vid3.mp4" type="video/mp4">
-        </video>
-        <figcaption>Finite‑element animation – von Mises stress distribution.</figcaption>
+      <figure class="yt-wrapper">
+        <iframe src="https://www.youtube.com/embed/uyC3dTUJPUc?rel=0"
+                title="Stress distribution" allowfullscreen></iframe>
       </figure>
+      <figcaption style="text-align:center">
+        Finite-element animation – von Mises stress distribution.
+      </figcaption>
 
-      <figure class="video-wrapper">
-        <video controls loading="lazy" poster="lab_11.png">
-          <source src="lab1_vid4.webm" type="video/webm">
-          <source src="lab1_vid4.mp4" type="video/mp4">
-        </video>
-        <figcaption>Tip deflection vs. pressure – slowed to 0.25× speed for clarity.</figcaption>
+      <figure class="yt-wrapper">
+        <iframe src="https://www.youtube.com/embed/CGYUqxhskNo?rel=0"
+                title="Tip deflection" allowfullscreen></iframe>
       </figure>
+      <figcaption style="text-align:center">
+        Tip deflection vs.&nbsp;pressure – slowed to 0.25 × speed for clarity.
+      </figcaption>
     </section>
 
+    <!-- Lab 2 placeholder -->
+    <section id="lab2"><h2>Lab 2 | Coming Soon</h2></section>
+
+    <!-- Lab 3 placeholder -->
+    <section id="lab3"><h2>Lab 3 | Coming Soon</h2></section>
 
     <!-- Lab 4 -->
     <section id="lab4">
       <h2>Lab 4 | SoRoSim (MATLAB)</h2>
-      <p><strong>SoRoSim</strong> models soft links as Cosserat rods using the Geometric Variable Strain method.</p>
+      <p>
+        <strong>SoRoSim</strong> models soft links as Cosserat rods using the
+        Geometric Variable Strain method.
+      </p>
       <figure>
-        <img src="lab4.png" alt="SoRoSim visualisation" />
-        <figcaption>Multi‑segment soft robot in <em>SoRoSim</em>.</figcaption>
+        <img src="lab4.png" alt="SoRoSim visualisation">
+        <figcaption>Multi-segment soft robot in <em>SoRoSim</em>.</figcaption>
       </figure>
 
-      <!-- Interactive Quiz -->
-      <div id="interactiveQuiz" style="margin-top:2rem;">
+      <figure class="yt-wrapper">
+        <iframe src="https://www.youtube.com/embed/p_faqnZOXj4?rel=0"
+                title="MATLAB SoRoSim demo" allowfullscreen></iframe>
+      </figure>
+      <figcaption style="text-align:center">
+        MATLAB implementation of SoRoSim.
+      </figcaption>
+
+      <!-- Quiz -->
+      <div id="interactiveQuiz" style="margin-top:2rem">
         <h3>Quick Quiz</h3>
         <p>What is the primary purpose of SoRoSim?</p>
-        <input type="text" id="quizAnswer" placeholder="Your answer…" />
+        <input type="text" id="quizAnswer" placeholder="Your answer…"/>
         <button id="checkBtn">Check</button>
         <button id="hintBtn" class="btn">Hint</button>
-        <p id="quizFeedback" style="font-weight:600;margin-top:.5rem;"></p>
-        <p id="quizHint" style="display:none;color:#555;">Hint: It lets you <em>simulate and analyse</em> soft‑robotic systems that bend, twist & stretch.</p>
+        <p id="quizFeedback" style="font-weight:600;margin-top:.5rem"></p>
+        <p id="quizHint" style="display:none;color:#555">
+          Hint: It lets you <em>simulate and analyse</em> soft-robotic systems that bend, twist & stretch.
+        </p>
       </div>
     </section>
 
     <!-- Downloads -->
     <section id="downloads">
       <h2>Downloads</h2>
-      <p>All resources include a README for quick setup.</p>
       <ul>
         <li><a href="SoftRoboticsLab_Models.zip" download>CAD Models (ZIP)</a></li>
         <li><a href="SoRoSimScripts.zip" download>MATLAB Scripts (ZIP)</a></li>
@@ -302,39 +259,73 @@
     <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
-      <p>Have a question? Reach out → <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
-
-      <form action="https://formspree.io/f/myzyeode" method="POST" style="margin-top:1rem;max-width:480px;">
+      <p>Questions? Email → <a href="mailto:Josebusparra@gmail.com">Josebusparra@gmail.com</a></p>
+      <form action="https://formspree.io/f/myzyeode" method="POST" style="max-width:480px">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" required/>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" required/>
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
-        <input type="submit" value="Send" />
+        <input type="submit" value="Send"/>
       </form>
     </section>
   </main>
 
-  <!-- Back to top -->
+  <!-- Back-to-top -->
   <button id="backToTop" aria-label="Back to top">▲</button>
 
   <!-- Footer -->
-  <footer style="text-align:center;padding:1rem 0;font-size:.9rem;background:var(--clr-surface);color:#888;">
-    © 2025 Jose Parra. All rights reserved.
+  <footer style="text-align:center;padding:1rem 0;font-size:.9rem;background:var(--clr-surface);color:#888">
+    © 2025 Jose Parra. All rights reserved.
   </footer>
 
-  <!-- JS -->
+  <!-- JavaScript -->
   <script>
-    // Mobile nav toggle
+    /* Mobile nav */
     const hamburger = document.getElementById('hamburger');
-    const navList = document.getElementById('nav-list');
+    const navList   = document.getElementById('nav-list');
     hamburger.addEventListener('click', () => navList.classList.toggle('open'));
-    hamburger.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') navList.classList.toggle('open');
+    hamburger.addEventListener('keypress', e =>{
+      if(e.key==='Enter') navList.classList.toggle('open');
     });
 
-    // Back‑to‑top button
+    /* Back-to-top */
     const topBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      window.scrollY > 400 ? (topBtn.style.display = '
+    window.addEventListener('scroll',()=>{
+      topBtn.style.display = window.scrollY>400 ? 'block':'none';
+    });
+    topBtn.addEventListener('click',()=>{
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    /* Dark-mode toggle */
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    function setTheme(mode){
+      root.setAttribute('data-theme',mode);
+      localStorage.setItem('theme',mode);
+      themeToggle.textContent = mode==='dark' ? '☀':'☾';
+    }
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(stored || (prefersDark ? 'dark' : 'light'));
+    themeToggle.addEventListener('click',()=>{
+      setTheme(root.getAttribute('data-theme')==='dark' ? 'light':'dark');
+    });
+
+    /* Quiz logic */
+    document.getElementById('checkBtn').addEventListener('click',()=>{
+      const ans = document.getElementById('quizAnswer').value.toLowerCase();
+      const fb  = document.getElementById('quizFeedback');
+      fb.style.color = ans.includes('simulate') ? 'green':'red';
+      fb.textContent = ans.includes('simulate')
+        ? 'Nice! You got it.'
+        : 'Not quite — try again or press Hint.';
+    });
+    document.getElementById('hintBtn').addEventListener('click',()=>{
+      document.getElementById('quizHint').style.display='block';
+    });
+  </script>
+</body>
+</html>
