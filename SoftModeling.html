@@ -163,12 +163,11 @@
 
       <figure>
         <img src="lab_1.png" alt="Lab 1 geometry">
-        <figcaption>Geometry view showing internal pressure channels.</figcaption>
+        
       </figure>
       <figure>
         <img src="lab_11.png" alt="Lab 1 results">
-        <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs.&nbsp;time.</figcaption>
-      </figure>
+       
 
       <!-- YouTube embeds -->
       <figure class="yt-wrapper">
@@ -176,7 +175,7 @@
                 title="Inflation sequence" allowfullscreen></iframe>
       </figure>
       <figcaption style="text-align:center">
-        Inflation sequence (0–30 kPa) – real-time view.
+        Part 1
       </figcaption>
 
       <figure class="yt-wrapper">
@@ -184,7 +183,7 @@
                 title="Gripping test" allowfullscreen></iframe>
       </figure>
       <figcaption style="text-align:center">
-        Gripping test – lifting a 250 g aluminium can.
+        Part 2
       </figcaption>
 
       <figure class="yt-wrapper">
@@ -192,7 +191,7 @@
                 title="Stress distribution" allowfullscreen></iframe>
       </figure>
       <figcaption style="text-align:center">
-        Finite-element animation – von Mises stress distribution.
+        Part 3
       </figcaption>
 
       <figure class="yt-wrapper">
@@ -200,7 +199,7 @@
                 title="Tip deflection" allowfullscreen></iframe>
       </figure>
       <figcaption style="text-align:center">
-        Tip deflection vs.&nbsp;pressure – slowed to 0.25 × speed for clarity.
+        Part 4
       </figcaption>
     </section>
 
@@ -233,7 +232,7 @@
       <!-- Quiz -->
       <div id="interactiveQuiz" style="margin-top:2rem">
         <h3>Quick Quiz</h3>
-        <p>What is the primary purpose of SoRoSim?</p>
+        <p>What is the value for qqd cell[1,2]?</p>
         <input type="text" id="quizAnswer" placeholder="Your answer…"/>
         <button id="checkBtn">Check</button>
         <button id="hintBtn" class="btn">Hint</button>
@@ -248,10 +247,7 @@
     <section id="downloads">
       <h2>Downloads</h2>
       <ul>
-        <li><a href="SoftRoboticsLab_Models.zip" download>CAD Models (ZIP)</a></li>
-        <li><a href="SoRoSimScripts.zip" download>MATLAB Scripts (ZIP)</a></li>
-        <li><a href="ANSYSProjectFiles.zip" download>ANSYS Project (ZIP)</a></li>
-        <li><a href="MaterialData.xlsx" download>Material Data (XLSX)</a></li>
+      
         <li><a href="SoftRobotics.pdf" download>Project Report (PDF)</a></li>
       </ul>
     </section>
@@ -318,8 +314,8 @@
     document.getElementById('checkBtn').addEventListener('click',()=>{
       const ans = document.getElementById('quizAnswer').value.toLowerCase();
       const fb  = document.getElementById('quizFeedback');
-      fb.style.color = ans.includes('simulate') ? 'green':'red';
-      fb.textContent = ans.includes('simulate')
+      fb.style.color = ans.includes('-9.8') ? 'green':'red';
+      fb.textContent = ans.includes('-9.8')
         ? 'Nice! You got it.'
         : 'Not quite — try again or press Hint.';
     });
