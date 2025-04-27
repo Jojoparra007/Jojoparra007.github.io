@@ -91,6 +91,20 @@
     figure img { max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
     figcaption { font-size: 0.9rem; color: #777; margin-top: 0.35rem; }
 
+    /* Video wrapper styling */
+    figure.video-wrapper,
+    figure.video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    figure.video-wrapper {
+      margin: 1.5rem 0;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
     ul, ol { margin-top: 0.5rem; margin-left: 1.25rem; }
 
     /* ===== BUTTONS & FORM ELEMENTS ===== */
@@ -214,6 +228,40 @@
         <img src="lab_11.png" alt="Lab 1 simulation results" />
         <figcaption>Pressure ramp (0–30 kPa) — tip displacement vs. time.</figcaption>
       </figure>
+
+      <!-- ===== Demonstration Videos ===== -->
+      <figure class="video-wrapper">
+        <video controls loading="lazy" poster="lab1_vid1_poster.jpg">
+          <source src="lab1_vid1.webm" type="video/webm">
+          <source src="lab1_vid1.mp4" type="video/mp4">
+          Your browser does not support HTML5 video. <a href="lab1_vid1.mp4">Download the clip</a>.
+        </video>
+        <figcaption>Inflation sequence (0–30 kPa) – real‑time view.</figcaption>
+      </figure>
+
+      <figure class="video-wrapper">
+        <video controls loading="lazy" poster="lab1_vid2_poster.jpg">
+          <source src="lab1_vid2.webm" type="video/webm">
+          <source src="lab1_vid2.mp4" type="video/mp4">
+        </video>
+        <figcaption>Gripping test – lifting a 250 g aluminium can.</figcaption>
+      </figure>
+
+      <figure class="video-wrapper">
+        <video controls loading="lazy" poster="lab1_vid3_poster.jpg">
+          <source src="lab1_vid3.webm" type="video/webm">
+          <source src="lab1_vid3.mp4" type="video/mp4">
+        </video>
+        <figcaption>Finite‑element animation – von Mises stress distribution.</figcaption>
+      </figure>
+
+      <figure class="video-wrapper">
+        <video controls loading="lazy" poster="lab1_vid4_poster.jpg">
+          <source src="lab1_vid4.webm" type="video/webm">
+          <source src="lab1_vid4.mp4" type="video/mp4">
+        </video>
+        <figcaption>Tip deflection vs. pressure – slowed to 0.25× speed for clarity.</figcaption>
+      </figure>
     </section>
 
 
@@ -289,38 +337,4 @@
     // Back‑to‑top button
     const topBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-      window.scrollY > 400 ? (topBtn.style.display = 'block') : (topBtn.style.display = 'none');
-    });
-    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    function setTheme(mode) {
-      root.setAttribute('data-theme', mode);
-      localStorage.setItem('theme', mode);
-      themeToggle.textContent = mode === 'dark' ? '☀' : '☾';
-    }
-    const storedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
-    themeToggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    // Quiz logic
-    const checkBtn = document.getElementById('checkBtn');
-    const hintBtn = document.getElementById('hintBtn');
-    checkBtn.addEventListener('click', () => {
-      const ans = document.getElementById('quizAnswer').value.toLowerCase();
-      const feedback = document.getElementById('quizFeedback');
-      feedback.style.color = ans.includes('simulate') ? 'green' : 'red';
-      feedback.textContent = ans.includes('simulate') ? 'Nice! You got it.' : 'Not quite — try again or press hint.';
-    });
-    hintBtn.addEventListener('click', () => {
-      document.getElementById('quizHint').style.display = 'block';
-    });
-  </script>
-</body>
-</html>
+      window.scrollY > 400 ? (topBtn.style.display = '
