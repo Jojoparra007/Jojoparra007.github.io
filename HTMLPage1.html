@@ -5,111 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose Parra – Aerospace Engineer & CFD Specialist</title>
 
-    <!-- ───────── CSS VARIABLES & BASE STYLES ───────── -->
     <style>
-        :root {
-            --clr-bg: #0e0e11;
-            --clr-surface: #1b1b1f;
-            --clr-accent: #32b5ff;
-            --clr-text: #f2f2f2;
-            --clr-muted: #9fa3ad;
-            --radius: 0.75rem;
-            --trans: 0.25s ease;
-            font-size: 16px;
-        }
-        *,*::before,*::after{box-sizing:border-box}
-        body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
-        a{color:var(--clr-accent);text-decoration:none}
-        img{max-width:100%;display:block;border-radius:var(--radius)}
-        h1,h2,h3{line-height:1.2;margin:0 0 .5em}
-        section{padding:4rem 1rem}
+    /* ── CSS VARIABLES & BASE STYLES ───────── */
+    :root {
+        --clr-bg: #0e0e11;
+        --clr-surface: #1b1b1f;
+        --clr-accent: #32b5ff;
+        --clr-text: #f2f2f2;
+        --clr-muted: #9fa3ad;
+        --radius: 0.75rem;
+        --trans: 0.25s ease;
+        font-size: 16px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:"Inter",system-ui,sans-serif;background:var(--clr-bg);color:var(--clr-text);line-height:1.6}
+    a{color:var(--clr-accent);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:var(--radius)}
+    h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+    section{padding:4rem 1rem}
 
-        /* ── Header & Navigation ── */
-        header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
-        .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
-        nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
-        nav li{position:relative}
-        nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
-        nav a:hover::after{width:100%}
+    /* ── Header & Navigation ── */
+    header{position:sticky;top:0;z-index:1000;background:rgba(14,14,17,.8);backdrop-filter:blur(10px)}
+    .nav-container{max-width:1100px;margin:0 auto;padding:1rem;display:flex;align-items:center;justify-content:space-between}
+    nav ul{display:flex;gap:2rem;list-style:none;margin:0;padding:0}
+    nav li{position:relative}
+    nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--clr-accent);transition:width var(--trans)}
+    nav a:hover::after{width:100%}
 
-        /* ── Hero ── */
-        #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
-        #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
-        #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
+    /* ── Hero ── */
+    #home{text-align:center;background:linear-gradient(135deg,#1b1b1f 0%,#141418 100%)}
+    #home h1{font-size:clamp(2.5rem,6vw,4rem);color:var(--clr-accent)}
+    #home p{max-width:720px;margin-inline:auto;color:var(--clr-muted)}
 
-        /* ── Layout helpers ── */
-        .container{max-width:1100px;margin:0 auto}
-        .grid{display:grid;gap:2rem}
-        @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
+    /* ── Layout helpers ── */
+    .container{max-width:1100px;margin:0 auto}
+    .grid{display:grid;gap:2rem}
+    @media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
 
-        /* ── Cards ── */
-        .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
-        .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
+    /* Place the full-width-card rule here, after the project-grid rule. */
+    .full-width-card {
+        grid-column: 1 / -1;
+    }
 
-        /* Video wrapper keeps size */
-        .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
-        .video-wrapper video{width:100%;height:100%;object-fit:cover}
+    /* ── Cards ── */
+    .card{background:var(--clr-surface);padding:2rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.35);transition:transform var(--trans),box-shadow var(--trans)}
+    .card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
 
-        /* Constrain project images */
-        .card img{width:100%;height:auto;max-height:240px;object-fit:cover;border-radius:var(--radius);margin-bottom:1rem}
+    /* Video wrapper keeps size */
+    .video-wrapper{width:100%;aspect-ratio:16/9;max-height:240px;overflow:hidden;border-radius:var(--radius)}
+    .video-wrapper video{width:100%;height:100%;object-fit:cover}
 
-        /* ── Contact form ── */
-        form{display:grid;gap:1rem;max-width:600px}
-        input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
-        input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
-        button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
-        button:hover{background:#53c5ff}
+    /* Constrain project images */
+    .card img{width:100%;height:auto;max-height:240px;object-fit:cover;border-radius:var(--radius);margin-bottom:1rem}
 
-        /* ── Footer ── */
-        footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
+    /* ── Contact form ── */
+    form{display:grid;gap:1rem;max-width:600px}
+    input,textarea,button{padding:.75rem 1rem;border-radius:var(--radius);border:1px solid var(--clr-surface);background:var(--clr-surface);color:var(--clr-text);font-size:1rem}
+    input:focus,textarea:focus{outline:2px solid var(--clr-accent)}
+    button{cursor:pointer;border:none;background:var(--clr-accent);color:#000;transition:background var(--trans)}
+    button:hover{background:#53c5ff}
 
-        /* ── Back‑to‑top ── */
-        #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-        #backToTop:hover{background:#53c5ff}
-        
+    /* ── Footer ── */
+    footer{text-align:center;padding:2rem 1rem;background:#1b1b1f;color:var(--clr-muted);font-size:.875rem}
 
-        .mini-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.75rem;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-}
+    /* ── Back‑to‑top ── */
+    #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+    #backToTop:hover{background:#53c5ff}
+    
+    .mini-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
 
-.downloads {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #333;
-}
-.downloads h4 {
-    margin-bottom: 0.75rem;
-    color: var(--clr-muted);
-    font-size: 1rem;
-    font-weight: 500;
-}
-.downloads a {
-    display: block;
-    margin-bottom: 0.5rem;
-    padding: 0.25rem 0;
-    font-size: 0.9rem;
-    transition: color var(--trans);
-}
-.downloads a:hover {
-    color: #ffffff;
-}
-
-/* ── Layout helpers ── */
-.container{max-width:1100px;margin:0 auto}
-.grid{display:grid;gap:2rem}
-@media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
-
-/* Add this rule below the others */
-.full-width-card {
-    grid-column: 1 / -1; /* This makes the element span from the first column line to the last. */
-}
-
-        
-    </style>
+    .downloads {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #333;
+    }
+    .downloads h4 {
+        margin-bottom: 0.75rem;
+        color: var(--clr-muted);
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .downloads a {
+        display: block;
+        margin-bottom: 0.5rem;
+        padding: 0.25rem 0;
+        font-size: 0.9rem;
+        transition: color var(--trans);
+    }
+    .downloads a:hover {
+        color: #ffffff;
+    }
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -282,6 +274,7 @@
     
 </body>
 </html>
+
 
 
 
