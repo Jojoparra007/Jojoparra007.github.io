@@ -66,6 +66,41 @@
         /* ── Back‑to‑top ── */
         #backToTop{position:fixed;right:1.25rem;bottom:1.25rem;padding:.75rem 1rem;border:none;border-radius:var(--radius);background:var(--clr-accent);color:#000;font-weight:600;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.35)}
         #backToTop:hover{background:#53c5ff}
+        
+
+
+
+
+
+        .mini-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.downloads {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+}
+.downloads h4 {
+    margin-bottom: 0.75rem;
+    color: var(--clr-muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.downloads a {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    transition: color var(--trans);
+}
+.downloads a:hover {
+    color: #ffffff;
+}
     </style>
 </head>
 <body>
@@ -173,18 +208,29 @@
                 </article>
                                    <!-- Project 7 -->
                 <article class="card">
-                    <h3>Geothermal U-tube, Thermal Efficiency Preformance</h3>
-                    <img src="SoftR.png" alt="U-tube">
-                    <p>This project models a vertical geothermal U-tube heat exchanger using OpenFOAM. 
-       The U-tube, with a 1-inch internal diameter and 150-foot length, is embedded in grout and surrounded by soil. 
-       The simulation evaluates heat transfer performance over time by coupling fluid flow in the tube with conduction in the surrounding ground.
-       Key outputs include temperature profiles along the pipe, grout thermal resistance, and long-term ground cooling trends — 
-       all of which inform geothermal system efficiency for sustainable heating and cooling applications.</p>
-                   
-                </article>
-            </div>
-        </div>
-    </section>
+                    <h3>Geothermal U-tube Thermal Performance</h3>
+                    <img src="Geometry.png" alt="Diagram of the geothermal U-tube mesh and geometry">
+    
+                      <div class="mini-gallery">
+                            <img src="Skematics.png" alt="Schematic of the U-tube system">
+                            <img src="GivenParameters.png" alt="Table of given parameters for the simulation">
+                            <img src="Htop.png" alt="Htop screenshot showing computational load during simulation">
+                     </div>
+
+                      <p>This project models a vertical geothermal U-tube heat exchanger using OpenFOAM. The simulation evaluates heat transfer performance over time by coupling fluid flow in the tube with conduction in the surrounding ground, informing efficiency for sustainable heating and cooling applications.</p>
+    
+                      <div class="downloads">
+                        <h4>Project Files & Research</h4>
+                            <a href="Riipen_Project_Geothermal_Heat_Exchange.pdf" download>Download Full Report (PDF)</a>
+                            <a href="Literature-Review.pdf" download>Download Literature Review (PDF)</a>
+                            <a href="Temperature-Research.pdf" download>Download Temperature Research (PDF)</a>
+                            <a href="Numerical-Solver-3d-Set-Up.pdf" download>Download Solver Setup (PDF)</a>
+                            <a href="Soil-Properties.pdf" download>Download Soil Properties (PDF)</a>
+                      </div>
+                     </article>
+                 </div>
+             </div>
+   b     </section> 
 
     <!-- Contact -->
     <section id="contact">
@@ -223,9 +269,12 @@
         const topBtn = document.getElementById("backToTop");
         window.addEventListener("scroll", () => { topBtn.style.display = window.scrollY > 400 ? "block" : "none"; });
         topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
     </script>
+    
 </body>
 </html>
+
 
 
 
