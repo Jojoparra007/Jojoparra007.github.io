@@ -68,10 +68,6 @@
         #backToTop:hover{background:#53c5ff}
         
 
-
-
-
-
         .mini-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -101,6 +97,18 @@
 .downloads a:hover {
     color: #ffffff;
 }
+
+/* ── Layout helpers ── */
+.container{max-width:1100px;margin:0 auto}
+.grid{display:grid;gap:2rem}
+@media(min-width:768px){.grid-cols-2{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}
+
+/* Add this rule below the others */
+.full-width-card {
+    grid-column: 1 / -1; /* This makes the element span from the first column line to the last. */
+}
+
+        
     </style>
 </head>
 <body>
@@ -207,7 +215,7 @@
 
                 </article>
                                    <!-- Project 7 -->
-                <article class="card">
+                <article class="card full-width-card">
                     <h3>Geothermal U-tube Thermal Performance</h3>
                     <img src="Geometry.png" alt="Diagram of the geothermal U-tube mesh and geometry">
     
@@ -274,6 +282,7 @@
     
 </body>
 </html>
+
 
 
 
